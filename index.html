@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>訪看ワークス｜訪問看護という働き方 — 病院の外で、看護の本質に出会う。</title>
+<meta name="description" content="訪看ワークスは、訪問看護という働き方を知るための情報メディア。仕事内容・魅力・1日の流れ・よくある不安まで、一人ひとりの暮らしに寄り添う看護をまるごと紹介します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   訪看ワークス — 訪問看護という働き方 LP
+   テイスト: 和のオーガニック × エディトリアル
+   フォントは Noto Sans JP のみ（字間・ウェイトで表情を作る）
+============================================================ */
+:root{
+  --cream:        #faf6ee;
+  --cream-deep:   #f4eee0;
+  --washi:        #fdfbf6;
+  --pine:         #2c4a3b;   /* 深い松葉色（主役） */
+  --pine-soft:    #3d614e;
+  --sage:         #8aa28f;
+  --sage-pale:    #dde5da;
+  --moss-tint:    #eef1e8;
+  --ink:          #33403a;
+  --ink-soft:     #5c6a61;
+  --beni:         #c2543c;   /* 紅柄色（アクセント） */
+  --beni-soft:    #e8c9bd;
+  --asagi:        #33596b;   /* 浅葱がかった藍（第二ボタン） */
+  --blush:        #f4e3d4;
+  --line:         #e3dccb;
+  --radius-l:     28px;
+  --radius-m:     18px;
+  --shadow-soft:  0 18px 50px -22px rgba(44,74,59,.22);
+  --shadow-card:  0 10px 32px -16px rgba(44,74,59,.16);
+  --ease-out:     cubic-bezier(.22,.8,.32,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.9;
+  letter-spacing:.04em;
+  font-feature-settings:"palt";
+  overflow-x:hidden;
+}
+::selection{background:var(--pine);color:var(--cream)}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+
+/* 和紙のような微細な粒子テクスチャ */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .42 0 0 0 0 .33 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+main,header,footer{position:relative;z-index:1}
+
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+
+/* ---------- 共通: セクション見出し ---------- */
+.sec-head{text-align:center;margin-bottom:56px}
+.sec-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:12px;font-weight:600;letter-spacing:.34em;text-indent:.34em;
+  color:var(--beni);text-transform:uppercase;margin-bottom:14px;
+}
+.sec-eyebrow::before,.sec-eyebrow::after{
+  content:"";width:26px;height:1px;background:var(--beni);opacity:.55;
+}
+.sec-title{
+  font-size:clamp(26px,4vw,38px);font-weight:700;letter-spacing:.14em;
+  color:var(--pine);line-height:1.6;
+}
+.sec-lede{margin-top:18px;font-size:15px;color:var(--ink-soft);font-weight:400}
+
+/* 葉の小枝の区切り飾り */
+.sprig{display:flex;justify-content:center;margin:10px 0 0}
+.sprig svg{width:54px;height:22px}
+
+/* ---------- ボタン ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 30px;border-radius:999px;
+  font-size:14px;font-weight:600;letter-spacing:.12em;
+  transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out),background .3s;
+  box-shadow:var(--shadow-card);
+  white-space:nowrap;
+}
+.btn .arr{transition:transform .35s var(--ease-out)}
+.btn:hover{transform:translateY(-3px)}
+.btn:hover .arr{transform:translateX(4px)}
+.btn-pine{background:var(--pine);color:var(--cream)}
+.btn-pine:hover{background:var(--pine-soft)}
+.btn-asagi{background:var(--asagi);color:var(--cream)}
+.btn-asagi:hover{background:#3f6c80}
+.btn-ghost{
+  background:transparent;color:var(--pine);
+  box-shadow:inset 0 0 0 1.5px var(--pine);
+}
+.btn-ghost:hover{background:var(--pine);color:var(--cream)}
+
+/* ---------- ヘッダー ---------- */
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  transition:background .4s,box-shadow .4s,padding .4s;
+  padding:18px 0;
+}
+.header.is-scrolled{
+  background:rgba(253,251,246,.92);backdrop-filter:blur(12px);
+  box-shadow:0 1px 0 var(--line);padding:10px 0;
+}
+.header-in{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{width:34px;height:34px;flex:none}
+.brand-name{
+  font-size:21px;font-weight:700;letter-spacing:.06em;color:var(--pine);
+  line-height:1.1;
+}
+.brand-name em{font-style:normal;color:var(--beni)}
+.brand-sub{font-size:10.5px;font-weight:500;letter-spacing:.22em;color:var(--ink-soft);margin-top:3px}
+.gnav{display:flex;align-items:center;gap:30px}
+.gnav a{
+  font-size:13.5px;font-weight:500;letter-spacing:.08em;color:var(--ink);
+  position:relative;padding:4px 0;
+}
+.gnav a::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:1.5px;
+  background:var(--beni);transform:scaleX(0);transform-origin:right;
+  transition:transform .35s var(--ease-out);
+}
+.gnav a:hover::after{transform:scaleX(1);transform-origin:left}
+.header .btn{padding:11px 24px;font-size:13px}
+.menu-btn{display:none}
+
+/* ---------- ヒーロー ---------- */
+.hero{
+  position:relative;padding:170px 0 110px;overflow:hidden;
+  background:
+    radial-gradient(900px 520px at 88% 8%, rgba(221,229,218,.55), transparent 64%),
+    radial-gradient(700px 480px at -6% 92%, rgba(244,227,212,.5), transparent 62%),
+    var(--cream);
+}
+.hero-in{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center}
+.hero-copy{position:relative}
+.hero-tate{
+  position:absolute;left:-72px;top:6px;
+  writing-mode:vertical-rl;font-size:11px;font-weight:600;
+  letter-spacing:.5em;color:var(--sage);
+  display:flex;align-items:center;gap:14px;
+}
+.hero-tate::after{content:"";width:1px;height:72px;background:var(--sage);opacity:.6}
+.hero h1{
+  font-size:clamp(34px,5vw,54px);font-weight:800;letter-spacing:.1em;
+  line-height:1.55;color:var(--pine);
+}
+.hero h1 .accent{
+  color:var(--beni);position:relative;display:inline-block;
+}
+.hero h1 .accent::after{
+  content:"";position:absolute;left:2%;bottom:6%;width:96%;height:26%;
+  background:var(--beni-soft);z-index:-1;border-radius:3px;
+  transform:scaleX(0);transform-origin:left;
+  animation:underline 1s var(--ease-out) .9s forwards;
+}
+@keyframes underline{to{transform:scaleX(1)}}
+.hero-lede{
+  margin-top:30px;font-size:15.5px;line-height:2.3;color:var(--ink-soft);
+  font-weight:400;
+}
+.hero-btns{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap}
+.hero-art{position:relative}
+.hero-art .frame{
+  border-radius:42% 58% 54% 46% / 46% 44% 56% 54%;
+  overflow:hidden;background:var(--washi);
+  box-shadow:var(--shadow-soft);
+  border:1px solid rgba(227,220,203,.8);
+  animation:blob 14s ease-in-out infinite alternate;
+}
+@keyframes blob{
+  0%{border-radius:42% 58% 54% 46% / 46% 44% 56% 54%}
+  100%{border-radius:52% 48% 44% 56% / 54% 56% 44% 46%}
+}
+.hero-art .leaf-deco{
+  position:absolute;color:var(--sage);opacity:.85;
+}
+.leaf-tr{top:-26px;right:-10px;width:74px;transform:rotate(24deg)}
+.leaf-bl{bottom:-18px;left:-26px;width:60px;transform:rotate(-140deg)}
+.float-chip{
+  position:absolute;left:-34px;bottom:46px;
+  background:var(--washi);border:1px solid var(--line);
+  border-radius:14px;padding:12px 18px;box-shadow:var(--shadow-card);
+  display:flex;align-items:center;gap:10px;
+  animation:bob 5s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.float-chip svg{width:24px;height:24px;flex:none}
+.float-chip span{font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--pine)}
+
+/* ---------- スクロール出現 ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.reveal.is-in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.12s}
+.reveal-d2{transition-delay:.24s}
+.reveal-d3{transition-delay:.36s}
+.reveal-d4{transition-delay:.48s}
+.reveal-d5{transition-delay:.6s}
+
+/* ---------- 訪問看護とは ---------- */
+.about{padding:110px 0 100px;position:relative}
+.about-in{display:grid;grid-template-columns:300px 1fr;gap:54px;align-items:start}
+.about-intro .sec-head{text-align:left;margin-bottom:24px}
+.about-intro .sec-eyebrow::before{display:none}
+.about-intro p{font-size:14.5px;color:var(--ink-soft);line-height:2.2}
+.text-link{
+  display:inline-flex;align-items:center;gap:8px;margin-top:22px;
+  font-size:13.5px;font-weight:600;letter-spacing:.08em;color:var(--pine);
+  border-bottom:1.5px solid var(--pine);padding-bottom:4px;
+  transition:color .3s,border-color .3s;
+}
+.text-link:hover{color:var(--beni);border-color:var(--beni)}
+.text-link .arr{transition:transform .3s var(--ease-out)}
+.text-link:hover .arr{transform:translateX(4px)}
+.about-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.acard{
+  background:var(--washi);border:1px solid var(--line);
+  border-radius:var(--radius-m);padding:26px 22px 0;
+  box-shadow:var(--shadow-card);overflow:hidden;
+  transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out);
+  display:flex;flex-direction:column;
+}
+.acard:hover{transform:translateY(-6px);box-shadow:var(--shadow-soft)}
+.acard-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.acard-head svg{width:30px;height:30px;flex:none}
+.acard-head h3{font-size:16.5px;font-weight:700;letter-spacing:.1em;color:var(--pine)}
+.acard p{font-size:13px;color:var(--ink-soft);line-height:2;margin-bottom:16px}
+.acard-art{
+  margin:auto -22px 0;background:var(--moss-tint);
+  border-top:1px dashed var(--sage-pale);padding:14px 18px 10px;
+}
+.acard-art svg{width:100%;height:118px}
+
+/* ---------- 選ばれる理由 ---------- */
+.reasons{padding:100px 0;background:
+  linear-gradient(var(--cream-deep), var(--cream-deep));
+  position:relative;
+}
+.reasons::before,.reasons::after{
+  content:"";position:absolute;left:0;right:0;height:38px;background:var(--cream);
+}
+.reasons::before{top:0;clip-path:ellipse(56% 100% at 50% 0%)}
+.reasons::after{bottom:0;clip-path:ellipse(56% 100% at 50% 100%)}
+.reason-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+}
+.rcard{
+  background:var(--washi);border:1px solid var(--line);
+  border-radius:var(--radius-m);padding:30px 24px;
+  box-shadow:var(--shadow-card);position:relative;overflow:hidden;
+  transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out);
+}
+.rcard:hover{transform:translateY(-6px);box-shadow:var(--shadow-soft)}
+.rcard::after{
+  content:attr(data-no);position:absolute;right:14px;top:8px;
+  font-size:40px;font-weight:300;letter-spacing:0;
+  color:var(--sage-pale);line-height:1;
+}
+.rcard-icon{
+  width:58px;height:58px;border-radius:50%;
+  background:var(--moss-tint);display:grid;place-items:center;
+  margin-bottom:18px;
+  transition:transform .45s var(--ease-out),background .3s;
+}
+.rcard:hover .rcard-icon{transform:rotate(-8deg) scale(1.06);background:var(--sage-pale)}
+.rcard-icon svg{width:30px;height:30px}
+.rcard h3{font-size:16px;font-weight:700;letter-spacing:.08em;color:var(--pine);line-height:1.7;margin-bottom:10px}
+.rcard p{font-size:12.5px;color:var(--ink-soft);line-height:2}
+.reason-grid .rcard:nth-child(5){grid-column:1/2}
+.reason-grid .rcard:nth-child(6){grid-column:2/3}
+
+/* ---------- こんな看護師さんに ---------- */
+.fitfor{padding:100px 0}
+.fitfor-band{
+  background:var(--moss-tint);border-radius:var(--radius-l);
+  border:1px solid var(--sage-pale);
+  display:grid;grid-template-columns:1.1fr .9fr;gap:40px;
+  padding:60px 64px;align-items:center;position:relative;overflow:hidden;
+}
+.fitfor-band::before{
+  content:"";position:absolute;right:-90px;top:-90px;width:280px;height:280px;
+  border-radius:50%;background:rgba(244,227,212,.55);
+}
+.fitfor h2{
+  font-size:clamp(24px,3.4vw,32px);font-weight:700;letter-spacing:.12em;
+  color:var(--pine);margin-bottom:30px;
+}
+.check-list li{
+  display:flex;align-items:center;gap:14px;
+  padding:13px 0;border-bottom:1px dashed var(--sage);
+  font-size:15.5px;font-weight:500;letter-spacing:.06em;
+}
+.check-list li:last-child{border-bottom:none}
+.check-list .ck{
+  width:26px;height:26px;flex:none;border-radius:7px;
+  background:var(--washi);border:1.5px solid var(--beni);
+  display:grid;place-items:center;
+}
+.check-list .ck svg{width:14px;height:14px}
+.fitfor-art{position:relative;z-index:1}
+.fitfor-art svg{width:100%;max-width:360px;margin:0 auto}
+
+/* ---------- 1日の流れ ---------- */
+.day{padding:100px 0 110px}
+.timeline{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:64px}
+.timeline::before{
+  content:"";position:absolute;top:101px;left:4%;right:4%;height:0;
+  border-top:2px dashed var(--sage);opacity:.6;
+}
+.tstop{text-align:center;position:relative}
+.tstop-time{
+  font-size:19px;font-weight:700;letter-spacing:.06em;color:var(--beni);
+  font-variant-numeric:tabular-nums;
+}
+.tstop-name{font-size:13.5px;font-weight:700;letter-spacing:.06em;color:var(--pine);margin-top:2px;line-height:1.6;min-height:43px}
+.tstop-dot{
+  width:14px;height:14px;border-radius:50%;background:var(--washi);
+  border:3px solid var(--beni);margin:14px auto 0;position:relative;z-index:1;
+  transition:transform .35s var(--ease-out);
+}
+.tstop:hover .tstop-dot{transform:scale(1.4)}
+.tstop p{font-size:11.5px;color:var(--ink-soft);line-height:1.9;margin-top:14px;padding:0 4px;min-height:84px}
+.tstop-art{
+  width:108px;height:108px;border-radius:50%;margin:6px auto 0;
+  background:var(--washi);border:1px solid var(--line);
+  box-shadow:var(--shadow-card);overflow:hidden;
+  transition:transform .45s var(--ease-out);
+}
+.tstop:hover .tstop-art{transform:translateY(-6px) rotate(2deg)}
+.tstop-art svg{width:100%;height:100%}
+
+/* ---------- 暮らしの中で支える看護 ---------- */
+.support{padding:100px 0;background:
+  radial-gradient(720px 420px at 10% 0%, rgba(221,229,218,.4), transparent 60%),
+  var(--cream);
+}
+.support-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.scard{
+  background:var(--washi);border:1px solid var(--line);
+  border-radius:var(--radius-m);overflow:hidden;
+  box-shadow:var(--shadow-card);
+  transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out);
+}
+.scard:hover{transform:translateY(-6px);box-shadow:var(--shadow-soft)}
+.scard-art{background:var(--blush);padding:18px 16px 8px;border-bottom:1px dashed var(--line)}
+.scard:nth-child(even) .scard-art{background:var(--moss-tint)}
+.scard-art svg{width:100%;height:140px}
+.scard-body{padding:22px 22px 26px}
+.scard h3{
+  font-size:15.5px;font-weight:700;letter-spacing:.08em;color:var(--pine);
+  margin-bottom:10px;display:flex;align-items:center;gap:8px;
+}
+.scard h3::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--beni);flex:none}
+.scard p{font-size:12.5px;color:var(--ink-soft);line-height:2}
+
+/* ---------- よくある不安 ---------- */
+.faq{padding:100px 0}
+.faq-in{display:grid;grid-template-columns:340px 1fr;gap:60px;align-items:start}
+.faq-side{position:sticky;top:120px}
+.faq-side .sec-head{text-align:left;margin-bottom:18px}
+.faq-side .sec-eyebrow::before{display:none}
+.faq-side p{font-size:14px;color:var(--ink-soft)}
+.faq-side-art{margin-top:30px}
+.faq-side-art svg{width:100%;max-width:300px}
+.faq-list{display:flex;flex-direction:column;gap:16px}
+.qa{
+  background:var(--washi);border:1px solid var(--line);
+  border-radius:var(--radius-m);box-shadow:var(--shadow-card);
+  overflow:hidden;
+}
+.qa summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;
+  padding:22px 26px;user-select:none;
+}
+.qa summary::-webkit-details-marker{display:none}
+.qa .q-mark{
+  width:38px;height:38px;flex:none;border-radius:50%;
+  background:var(--pine);color:var(--cream);
+  display:grid;place-items:center;
+  font-size:16px;font-weight:700;
+  transition:background .3s;
+}
+.qa[open] .q-mark{background:var(--beni)}
+.qa .q-text{font-size:15px;font-weight:600;letter-spacing:.05em;color:var(--ink);flex:1;line-height:1.7}
+.qa .q-toggle{
+  width:24px;height:24px;flex:none;position:relative;
+}
+.qa .q-toggle::before,.qa .q-toggle::after{
+  content:"";position:absolute;top:50%;left:50%;width:14px;height:2px;
+  background:var(--sage);transform:translate(-50%,-50%);
+  transition:transform .35s var(--ease-out);border-radius:2px;
+}
+.qa .q-toggle::after{transform:translate(-50%,-50%) rotate(90deg)}
+.qa[open] .q-toggle::after{transform:translate(-50%,-50%) rotate(0deg)}
+.qa-a{
+  display:flex;gap:16px;padding:0 26px 24px;
+}
+.qa .a-mark{
+  width:38px;height:38px;flex:none;border-radius:50%;
+  background:var(--moss-tint);color:var(--pine);
+  display:grid;place-items:center;font-size:16px;font-weight:700;
+}
+.qa-a p{font-size:13.5px;color:var(--ink-soft);line-height:2.1;padding-top:6px}
+
+/* ---------- 先輩の声 ---------- */
+.voices{padding:100px 0;background:var(--cream-deep);position:relative}
+.voices::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:38px;
+  background:var(--cream);clip-path:ellipse(56% 100% at 50% 0%);
+}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.vcard{
+  background:var(--washi);border:1px solid var(--line);
+  border-radius:var(--radius-m);padding:34px 28px 28px;
+  box-shadow:var(--shadow-card);position:relative;
+  transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out);
+  display:flex;flex-direction:column;
+}
+.vcard:hover{transform:translateY(-6px);box-shadow:var(--shadow-soft)}
+.vcard .quote-mark{
+  position:absolute;top:-14px;left:24px;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--beni);color:var(--cream);
+  display:grid;place-items:center;box-shadow:var(--shadow-card);
+}
+.vcard .quote-mark svg{width:18px;height:18px}
+.vcard blockquote{
+  font-size:15px;font-weight:600;letter-spacing:.05em;
+  color:var(--pine);line-height:2.1;flex:1;
+}
+.vcard-person{
+  display:flex;align-items:center;gap:14px;margin-top:24px;
+  padding-top:20px;border-top:1px dashed var(--line);
+}
+.vcard-avatar{
+  width:56px;height:56px;border-radius:50%;flex:none;overflow:hidden;
+  background:var(--moss-tint);border:1px solid var(--line);
+}
+.vcard-avatar svg{width:100%;height:100%}
+.vcard-person .nm{font-size:13.5px;font-weight:700;color:var(--ink);letter-spacing:.06em}
+.vcard-person .role{font-size:11px;color:var(--ink-soft);line-height:1.7;margin-top:2px}
+
+/* ---------- CTA ---------- */
+.cta{padding:120px 0 110px}
+.cta-band{
+  background:var(--pine);border-radius:var(--radius-l);
+  padding:70px 70px;position:relative;overflow:hidden;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;
+  box-shadow:var(--shadow-soft);
+}
+.cta-band::before{
+  content:"";position:absolute;left:-70px;bottom:-110px;width:320px;height:320px;
+  border-radius:50%;border:1.5px solid rgba(250,246,238,.14);
+}
+.cta-band::after{
+  content:"";position:absolute;left:-30px;bottom:-150px;width:320px;height:320px;
+  border-radius:50%;border:1.5px solid rgba(250,246,238,.1);
+}
+.cta-copy h2{
+  font-size:clamp(26px,3.6vw,38px);font-weight:700;letter-spacing:.12em;
+  color:var(--cream);line-height:1.7;
+}
+.cta-copy p{margin-top:18px;font-size:14.5px;color:rgba(250,246,238,.78);letter-spacing:.08em}
+.cta-btns{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap}
+.cta .btn-cream{background:var(--cream);color:var(--pine)}
+.cta .btn-cream:hover{background:#fff}
+.cta .btn-line{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1.5px rgba(250,246,238,.7)}
+.cta .btn-line:hover{background:rgba(250,246,238,.12)}
+.cta-art{position:relative;z-index:1}
+.cta-art .frame{
+  border-radius:46% 54% 52% 48% / 48% 46% 54% 52%;
+  overflow:hidden;background:var(--washi);
+  box-shadow:0 24px 60px -24px rgba(0,0,0,.4);
+}
+
+/* ---------- フッター ---------- */
+.footer{border-top:1px solid var(--line);padding:44px 0;background:var(--washi)}
+.footer-in{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.fnav{display:flex;gap:26px;flex-wrap:wrap}
+.fnav a{font-size:12.5px;font-weight:500;letter-spacing:.06em;color:var(--ink-soft);transition:color .3s}
+.fnav a:hover{color:var(--beni)}
+.footer .btn{padding:11px 24px;font-size:12.5px}
+.copyright{width:100%;text-align:center;margin-top:30px;font-size:11px;letter-spacing:.14em;color:var(--sage)}
+
+/* ============================================================
+   レスポンシブ
+============================================================ */
+@media (max-width:1080px){
+  .reason-grid{grid-template-columns:repeat(3,1fr)}
+  .reason-grid .rcard:nth-child(5){grid-column:auto}
+  .reason-grid .rcard:nth-child(6){grid-column:auto}
+  .timeline{grid-template-columns:repeat(3,1fr);row-gap:44px}
+  .timeline::before{display:none}
+  .tstop p{min-height:0}
+  .tstop-name{min-height:0}
+  .support-grid{grid-template-columns:repeat(2,1fr)}
+  .about-in{grid-template-columns:1fr;gap:36px}
+  .hero-tate{display:none}
+}
+@media (max-width:880px){
+  html{scroll-padding-top:80px}
+  .gnav{
+    position:fixed;inset:0;background:rgba(44,74,59,.97);
+    flex-direction:column;justify-content:center;gap:34px;
+    opacity:0;pointer-events:none;transition:opacity .4s;z-index:60;
+  }
+  .gnav.is-open{opacity:1;pointer-events:auto}
+  .gnav a{color:var(--cream);font-size:17px;letter-spacing:.18em}
+  .gnav a::after{background:var(--cream)}
+  .header .btn-pine{display:none}
+  .menu-btn{
+    display:block;width:44px;height:44px;border:none;background:none;
+    cursor:pointer;position:relative;z-index:70;
+  }
+  .menu-btn span{
+    position:absolute;left:10px;width:24px;height:2px;border-radius:2px;
+    background:var(--pine);transition:transform .4s var(--ease-out),opacity .3s,background .3s;
+  }
+  .menu-btn span:nth-child(1){top:16px}
+  .menu-btn span:nth-child(2){top:22px}
+  .menu-btn span:nth-child(3){top:28px}
+  .menu-btn.is-open span{background:var(--cream)}
+  .menu-btn.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .menu-btn.is-open span:nth-child(2){opacity:0}
+  .menu-btn.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+  .hero{padding:130px 0 80px}
+  .hero-in{grid-template-columns:1fr;gap:48px}
+  .hero-art{max-width:440px;margin:0 auto;width:100%}
+  .float-chip{left:-6px}
+  .about{padding:80px 0 70px}
+  .about-cards{grid-template-columns:1fr;max-width:440px;margin:0 auto}
+  .reasons{padding:80px 0}
+  .reason-grid{grid-template-columns:repeat(2,1fr)}
+  .fitfor{padding:70px 0}
+  .fitfor-band{grid-template-columns:1fr;padding:44px 30px;gap:30px}
+  .fitfor-art{order:-1}
+  .fitfor-art svg{max-width:260px}
+  .day{padding:80px 0}
+  .timeline{grid-template-columns:repeat(2,1fr)}
+  .support{padding:80px 0}
+  .support-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto}
+  .faq{padding:80px 0}
+  .faq-in{grid-template-columns:1fr;gap:36px}
+  .faq-side{position:static}
+  .faq-side-art{display:none}
+  .voices{padding:80px 0}
+  .voice-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}
+  .cta{padding:80px 0}
+  .cta-band{grid-template-columns:1fr;padding:48px 30px;text-align:center}
+  .cta-btns{justify-content:center}
+  .cta-art{max-width:320px;margin:0 auto;width:100%}
+  .footer-in{flex-direction:column;text-align:center}
+}
+@media (max-width:520px){
+  .wrap{padding:0 20px}
+  .reason-grid{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr;max-width:320px;margin:48px auto 0}
+  .hero-btns .btn{width:100%;justify-content:center}
+  .cta-btns .btn{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 共通SVG定義（線画イラストのパーツ） ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- 葉の小枝 -->
+    <g id="def-sprig">
+      <path d="M4 18 Q26 4 50 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M14 13.5 Q12 7 17 4 Q20 10 14 13.5Z" fill="currentColor"/>
+      <path d="M26 10.5 Q25 4 30 1.5 Q33 8 26 10.5Z" fill="currentColor"/>
+      <path d="M38 9.5 Q38 3 43 1 Q45 8 38 9.5Z" fill="currentColor"/>
+    </g>
+    <!-- ロゴマーク: 双葉と輪 -->
+    <g id="def-logo">
+      <circle cx="17" cy="17" r="15.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M17 26 Q16 18 11 13 Q18 12 19 20 Q19 24 17 26Z" fill="currentColor"/>
+      <path d="M18 19 Q21 12 26 10 Q26 17 20 20Z" fill="currentColor" opacity=".62"/>
+      <path d="M17 26 Q17 21 17 18" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- ============ ヘッダー ============ -->
+<header class="header" id="header">
+  <div class="wrap header-in">
+    <a class="brand" href="#top" aria-label="訪看ワークス トップへ">
+      <svg class="brand-mark" viewBox="0 0 34 34" style="color:var(--pine)"><use href="#def-logo"/></svg>
+      <span>
+        <span class="brand-name">訪看<em>ワークス</em></span>
+        <span class="brand-sub" style="display:block">訪問看護という働き方</span>
+      </span>
+    </a>
+    <nav class="gnav" id="gnav" aria-label="グローバルナビゲーション">
+      <a href="#about">訪問看護とは</a>
+      <a href="#reasons">魅力・やりがい</a>
+      <a href="#day">働き方・1日の流れ</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#faq">よくある不安</a>
+    </nav>
+    <a class="btn btn-pine" href="#cta">資料を見る <span class="arr">→</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ ヒーロー ============ -->
+<section class="hero">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <div class="hero-tate">訪問看護という選択</div>
+      <h1 class="reveal is-in">病院の外で、<br>看護の<span class="accent">本質</span>に<br>出会う。</h1>
+      <p class="hero-lede reveal is-in reveal-d2">
+        訪問看護は、一人ひとりの暮らしに<br>
+        深く寄り添える看護です。<br>
+        医療だけでなく、生活を支えるやりがいがあります。
+      </p>
+      <div class="hero-btns reveal is-in reveal-d3">
+        <a class="btn btn-pine" href="#about">訪問看護について知る <span class="arr">→</span></a>
+        <a class="btn btn-asagi" href="#day">働き方を見てみる <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="hero-art reveal is-in reveal-d2">
+      <svg class="leaf-deco leaf-tr" viewBox="0 0 54 22" style="color:var(--sage)"><use href="#def-sprig"/></svg>
+      <div class="frame">
+        <!-- 線画イラスト: 看護師と利用者が手を取り合う -->
+        <svg viewBox="0 0 560 470" role="img" aria-label="看護師が利用者の手を取り微笑み合うイラスト">
+          <rect width="560" height="470" fill="#fdfbf6"/>
+          <ellipse cx="280" cy="250" rx="252" ry="208" fill="#eef1e8"/>
+          <!-- 窓 -->
+          <rect x="64" y="66" width="132" height="158" rx="10" fill="#fdfbf6" stroke="#c9d3c5" stroke-width="2.5"/>
+          <line x1="130" y1="66" x2="130" y2="224" stroke="#c9d3c5" stroke-width="2.5"/>
+          <line x1="64" y1="145" x2="196" y2="145" stroke="#c9d3c5" stroke-width="2.5"/>
+          <path d="M84 124 Q96 96 116 110" fill="none" stroke="#dde5da" stroke-width="3" stroke-linecap="round"/>
+          <!-- 観葉植物 -->
+          <path d="M448 318 q-4-58 -28-86 M448 318 q2-52 26-78 M448 318 q-1-40 0-62" fill="none" stroke="#2c4a3b" stroke-width="3" stroke-linecap="round"/>
+          <path d="M420 232 q-16-10 -16-28 q20 2 22 24Z M474 240 q16-12 14-30 q-20 4 -20 26Z M448 256 q-2-20 8-32 q10 16 -2 34Z" fill="#8aa28f"/>
+          <path d="M428 318 h40 l-5 44 h-30 Z" fill="#e8c9bd" stroke="#c2543c" stroke-width="2.5" stroke-linejoin="round"/>
+          <!-- ソファ(利用者側) -->
+          <path d="M306 332 q-6-66 38-70 l96 0 q40 6 36 70 l4 56 h-178 Z" fill="#f4e3d4" stroke="#caa68e" stroke-width="3" stroke-linejoin="round"/>
+          <!-- 利用者(高齢の女性) -->
+          <circle cx="392" cy="208" r="34" fill="#fdfbf6" stroke="#33403a" stroke-width="3"/>
+          <path d="M360 200 q-4-30 32-30 q36 0 32 30 q-8-14 -32-14 q-24 0 -32 14Z" fill="#dde5da" stroke="#33403a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M358 206 q-6 6 -2 14 M426 206 q6 6 2 14" fill="none" stroke="#33403a" stroke-width="3" stroke-linecap="round"/>
+          <path d="M380 212 q3 3 7 0 M402 212 q3 3 7 0" fill="none" stroke="#33403a" stroke-width="3" stroke-linecap="round"/>
+          <path d="M386 228 q6 5 14 0" fill="none" stroke="#c2543c" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="372" cy="222" r="5" fill="#f0cabb" opacity=".85"/>
+          <circle cx="414" cy="222" r="5" fill="#f0cabb" opacity=".85"/>
+          <!-- 利用者の体・カーディガン -->
+          <path d="M352 280 q6-40 40-40 q36 0 42 40 l6 60 h-94 Z" fill="#cdb6d6" stroke="#33403a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M392 244 v44" stroke="#33403a" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- 利用者の腕(差し出す) -->
+          <path d="M356 268 q-32 14 -52 34" fill="none" stroke="#33403a" stroke-width="3" stroke-linecap="round"/>
+          <!-- 看護師 -->
+          <circle cx="196" cy="186" r="34" fill="#fdfbf6" stroke="#33403a" stroke-width="3"/>
+          <path d="M164 184 q-2-34 32-34 q34 0 32 34 q-4-18 -32-18 q-28 0 -32 18Z" fill="#9a7d5e" stroke="#33403a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M228 184 q10 14 4 30 q-8-4 -8-18" fill="#9a7d5e" stroke="#33403a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M186 192 q3 3 7 0 M208 192 q3 3 7 0" fill="none" stroke="#33403a" stroke-width="3" stroke-linecap="round"/>
+          <path d="M190 206 q6 6 14 0" fill="none" stroke="#c2543c" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="178" cy="200" r="5" fill="#f0cabb" opacity=".85"/>
+          <circle cx="218" cy="200" r="5" fill="#f0cabb" opacity=".85"/>
+          <!-- 看護師の体(白衣) -->
+          <path d="M148 282 q8-64 48-64 q40 0 48 64 l8 96 h-112 Z" fill="#fdfbf6" stroke="#33403a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M196 218 v70" stroke="#33403a" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M178 224 l18 22 l18-22" fill="none" stroke="#33403a" stroke-width="2.5" stroke-linejoin="round"/>
+          <!-- 聴診器 -->
+          <path d="M184 232 q-2 30 12 40 q14-10 12-40" fill="none" stroke="#33596b" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="196" cy="278" r="7" fill="#33596b"/>
+          <!-- 手を取り合う -->
+          <path d="M236 270 q36 22 64 32" fill="none" stroke="#33403a" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="302" cy="303" rx="13" ry="10" fill="#f0cabb" stroke="#33403a" stroke-width="2.5" transform="rotate(18 302 303)"/>
+          <!-- ぬくもりマーク -->
+          <path d="M300 268 q-7-8 0-13 q7 5 0 13Z" fill="#c2543c"/>
+          <path d="M318 252 q-5-6 0-10 q5 4 0 10Z" fill="#c2543c" opacity=".7"/>
+          <!-- 床のライン -->
+          <path d="M60 414 q220 26 440 0" fill="none" stroke="#c9d3c5" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <svg class="leaf-deco leaf-bl" viewBox="0 0 54 22" style="color:var(--sage)"><use href="#def-sprig"/></svg>
+      <div class="float-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--beni)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7.5-4.8-9.8-9.2C.5 8 2.6 4 6.4 4c2.4 0 4.2 1.4 5.6 3.4C13.4 5.4 15.2 4 17.6 4c3.8 0 5.9 4 4.2 7.8C19.5 16.2 12 21 12 21Z"/></svg>
+        <span>暮らしに寄り添う看護</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 訪問看護とは ============ -->
+<section class="about" id="about">
+  <div class="wrap about-in">
+    <div class="about-intro reveal">
+      <div class="sec-head">
+        <span class="sec-eyebrow">About</span>
+        <h2 class="sec-title">訪問看護とは</h2>
+        <div class="sprig"><svg viewBox="0 0 54 22" style="color:var(--sage)"><use href="#def-sprig"/></svg></div>
+      </div>
+      <p>看護師がご自宅などを訪問し、医療的ケアや療養管理、療養生活の支援を行うサービスです。病気や障がいがあっても、住み慣れた場所で暮らし続けられるよう支えます。</p>
+      <a class="text-link" href="#support">訪問看護の役割を詳しく見る <span class="arr">→</span></a>
+    </div>
+    <div class="about-cards">
+      <article class="acard reveal reveal-d1">
+        <div class="acard-head">
+          <svg viewBox="0 0 30 30" fill="none" stroke="var(--pine)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 27s-9.4-6-12.2-11.5C.6 10 3.3 5 8 5c3 0 5.2 1.7 7 4.2C16.8 6.7 19 5 22 5c4.7 0 7.4 5 5.2 10.5C24.4 21 15 27 15 27Z"/><path d="M4 15h6l2-4 3 7 2.5-5H26" stroke="var(--beni)"/></svg>
+          <h3>健康管理</h3>
+        </div>
+        <p>バイタルチェックや服薬管理など、日々の健康を支えます。</p>
+        <div class="acard-art">
+          <!-- 血圧測定のイラスト -->
+          <svg viewBox="0 0 240 118" role="img" aria-label="血圧測定をする看護師">
+            <circle cx="82" cy="46" r="20" fill="#fdfbf6" stroke="#33403a" stroke-width="2.5"/>
+            <path d="M63 44 q0-19 19-19 q19 0 19 19 q-4-10 -19-10 q-15 0 -19 10Z" fill="#9a7d5e" stroke="#33403a" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M76 49 q2 2 4 0 M88 49 q2 2 4 0" stroke="#33403a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <path d="M78 57 q4 4 9 0" stroke="#c2543c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <path d="M56 104 q4-40 26-40 q22 0 26 40Z" fill="#fdfbf6" stroke="#33403a" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M104 80 q22-4 38-2" stroke="#33403a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <rect x="140" y="58" width="48" height="36" rx="8" fill="#fdfbf6" stroke="#33596b" stroke-width="2.5"/>
+            <path d="M147 78 h8 l4-9 5 14 4-8 h12" fill="none" stroke="#c2543c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M164 50 q-2-12 8-14 M196 70 q12-2 14 8" stroke="#8aa28f" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M30 108 q90 8 180 0" stroke="#c9d3c5" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </article>
+      <article class="acard reveal reveal-d2">
+        <div class="acard-head">
+          <svg viewBox="0 0 30 30" fill="none" stroke="var(--pine)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="12" height="24" rx="4"/><path d="M15 3v-1.5M11 9h8M15 13v8M11.5 16.5h7" stroke-width="2"/><circle cx="15" cy="17" r="0" fill="var(--beni)"/></svg>
+          <h3>医療的ケア</h3>
+        </div>
+        <p>点滴・褥瘡ケア・吸引など、専門的な医療ケアを行います。</p>
+        <div class="acard-art">
+          <!-- 点滴ケアのイラスト -->
+          <svg viewBox="0 0 240 118" role="img" aria-label="点滴の管理をする看護師">
+            <path d="M168 14 v86 M154 100 h28" stroke="#33596b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M160 14 h16 l-2 26 h-12Z" fill="#fdfbf6" stroke="#33596b" stroke-width="2.5" stroke-linejoin="round"/>
+            <rect x="162" y="18" width="12" height="12" rx="2" fill="#dde5da"/>
+            <path d="M168 40 q0 16 -10 24 q-12 9 -30 10" stroke="#33596b" stroke-width="2" fill="none" stroke-dasharray="1 6" stroke-linecap="round"/>
+            <circle cx="84" cy="44" r="20" fill="#fdfbf6" stroke="#33403a" stroke-width="2.5"/>
+            <path d="M65 42 q0-19 19-19 q19 0 19 19 q-4-10 -19-10 q-15 0 -19 10Z" fill="#5c4a38" stroke="#33403a" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M78 47 q2 2 4 0 M90 47 q2 2 4 0" stroke="#33403a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <path d="M80 55 q4 4 9 0" stroke="#c2543c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <path d="M58 102 q4-40 26-40 q22 0 26 40Z" fill="#fdfbf6" stroke="#33403a" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M106 80 q14-2 22-4" stroke="#33403a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M84 62 v18 M74 66 l20 8" stroke="#33403a" stroke-width="2" fill="none" stroke-linecap="round" opacity="0"/>
+            <path d="M30 108 q90 8 180 0" stroke="#c9d3c5" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M196 56 q8 10 0 18 q-8-8 0-18Z" fill="#8aa28f"/>
+          </svg>
+        </div>
+      </article>
+      <article class="acard reveal reveal-d3">
+        <div class="acard-head">
+          <svg viewBox="0 0 30 30" fill="none" stroke="var(--pine)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14 L15 5l11 9"/><path d="M7 12v12h16V12"/><path d="M15 24v-6h0" stroke="var(--beni)"/><path d="M12 18h6" stroke="var(--beni)"/></svg>
+          <h3>生活支援</h3>
+        </div>
+        <p>日常生活への助言や環境調整、家族の支援も行います。</p>
+        <div class="acard-art">
+          <!-- 生活相談のイラスト -->
+          <svg viewBox="0 0 240 118" role="img" aria-label="利用者と談笑する看護師">
+            <circle cx="76" cy="46" r="19" fill="#fdfbf6" stroke="#33403a" stroke-width="2.5"/>
+            <path d="M58 44 q0-18 18-18 q18 0 18 18 q-4-9 -18-9 q-14 0 -18 9Z" fill="#9a7d5e" stroke="#33403a" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M70 49 q2 2 4 0 M82 49 q2 2 4 0" stroke="#33403a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <path d="M72 56 q4 4 8 0" stroke="#c2543c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <path d="M52 104 q4-38 24-38 q20 0 24 38Z" fill="#fdfbf6" stroke="#33403a" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="166" cy="48" r="19" fill="#fdfbf6" stroke="#33403a" stroke-width="2.5"/>
+            <path d="M148 44 q-2-17 18-17 q20 0 18 17 q-5-8 -18-8 q-13 0 -18 8Z" fill="#dde5da" stroke="#33403a" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M160 51 q2 2 4 0 M172 51 q2 2 4 0" stroke="#33403a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <path d="M162 58 q4 4 8 0" stroke="#c2543c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <path d="M142 104 q4-36 24-36 q20 0 24 36Z" fill="#cdb6d6" stroke="#33403a" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M112 30 q9-8 18 0" stroke="#8aa28f" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M116 22 q5-5 10 0" stroke="#8aa28f" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".6"/>
+            <path d="M30 108 q90 8 180 0" stroke="#c9d3c5" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 選ばれる理由 ============ -->
+<section class="reasons" id="reasons">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Reasons</span>
+      <h2 class="sec-title">訪問看護が選ばれる理由</h2>
+      <div class="sprig"><svg viewBox="0 0 54 22" style="color:var(--sage)"><use href="#def-sprig"/></svg></div>
+    </div>
+    <div class="reason-grid">
+      <article class="rcard reveal" data-no="01">
+        <div class="rcard-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="var(--pine)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 26s-8.6-5.4-11-10C2 11.6 4.4 7 8.6 7c2.7 0 4.7 1.5 6.4 3.7C16.7 8.5 18.7 7 21.4 7c4.2 0 6.6 4.6 4.6 9-2.4 4.6-11 10-11 10Z"/><path d="M9 17.5 q6 4 12 0" stroke="var(--beni)"/></svg>
+        </div>
+        <h3>利用者さんと<br>深く関われる</h3>
+        <p>一人ひとりとじっくり向き合い、信頼関係を築けます。</p>
+      </article>
+      <article class="rcard reveal reveal-d1" data-no="02">
+        <div class="rcard-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="var(--pine)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14 15 5l11 9"/><path d="M7 12v13h16V12"/><path d="M12 25v-7h6v7" stroke="var(--beni)"/></svg>
+        </div>
+        <h3>生活全体を<br>支えられる</h3>
+        <p>医療だけでなく、暮らしそのものに寄り添う看護ができます。</p>
+      </article>
+      <article class="rcard reveal reveal-d2" data-no="03">
+        <div class="rcard-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="var(--pine)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 25v-3.2C8 20 6 16.8 6 13a9 9 0 0 1 18 0c0 3.8-2 7-5 8.8V25Z"/><path d="M12 13a3 3 0 0 1 6 0c0 2-3 2-3 4" stroke="var(--beni)"/><circle cx="15" cy="19.5" r=".4" fill="var(--beni)" stroke="var(--beni)"/></svg>
+        </div>
+        <h3>看護師としての<br>判断力が磨かれる</h3>
+        <p>アセスメント力や判断力が日々の実践で高まります。</p>
+      </article>
+      <article class="rcard reveal reveal-d3" data-no="04">
+        <div class="rcard-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="var(--pine)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17q-2.5-2-1-4.5T9.5 12M24 17q2.5-2 1-4.5T20.5 12"/><path d="M9 25c0-4 2-7 6-7s6 3 6 7"/><path d="M15 14s-3.4-2.2-4.3-4C9.8 8 10.8 6 12.6 6c1 0 1.8.6 2.4 1.4C15.6 6.6 16.4 6 17.4 6c1.8 0 2.8 2 1.9 4-.9 1.8-4.3 4-4.3 4Z" fill="var(--beni)" stroke="var(--beni)" stroke-width="1.2"/></svg>
+        </div>
+        <h3>感謝を直接<br>感じやすい</h3>
+        <p>「ありがとう」がやりがいにつながります。</p>
+      </article>
+      <article class="rcard reveal" data-no="05">
+        <div class="rcard-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="var(--pine)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="15" r="11"/><path d="M15 9v6l4.5 3" stroke="var(--beni)"/></svg>
+        </div>
+        <h3>柔軟な働き方が<br>しやすい</h3>
+        <p>ライフステージに合わせて働き方を選びやすい環境です。</p>
+      </article>
+      <article class="rcard reveal reveal-d1" data-no="06">
+        <div class="rcard-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="var(--pine)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="9" r="3"/><circle cx="20" cy="9" r="3"/><path d="M4 22c0-3.3 2.7-6 6-6 1.9 0 3.6.9 4.7 2.2M26 22c0-3.3-2.7-6-6-6-1.9 0-3.6.9-4.7 2.2"/><path d="M15 19v6M12 25h6" stroke="var(--beni)"/></svg>
+        </div>
+        <h3>地域医療に<br>貢献できる</h3>
+        <p>住み慣れた地域で、人や社会に役立つやりがいがあります。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ こんな看護師さんにおすすめ ============ -->
+<section class="fitfor">
+  <div class="wrap">
+    <div class="fitfor-band reveal">
+      <div>
+        <h2>こんな看護師さんに<br>おすすめ</h2>
+        <ul class="check-list">
+          <li class="reveal reveal-d1"><span class="ck"><svg viewBox="0 0 14 14" fill="none" stroke="var(--beni)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5 5.5 11 12 3.5"/></svg></span>もっと一人ひとりに向き合いたい</li>
+          <li class="reveal reveal-d2"><span class="ck"><svg viewBox="0 0 14 14" fill="none" stroke="var(--beni)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5 5.5 11 12 3.5"/></svg></span>病院以外の働き方に興味がある</li>
+          <li class="reveal reveal-d3"><span class="ck"><svg viewBox="0 0 14 14" fill="none" stroke="var(--beni)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5 5.5 11 12 3.5"/></svg></span>暮らしに寄り添う看護をしたい</li>
+          <li class="reveal reveal-d4"><span class="ck"><svg viewBox="0 0 14 14" fill="none" stroke="var(--beni)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5 5.5 11 12 3.5"/></svg></span>主体性を活かして働きたい</li>
+        </ul>
+      </div>
+      <div class="fitfor-art reveal reveal-d2">
+        <!-- 上を見上げる看護師の線画 -->
+        <svg viewBox="0 0 360 320" role="img" aria-label="クリップボードを持ち微笑む看護師">
+          <ellipse cx="180" cy="170" rx="150" ry="138" fill="#fdfbf6"/>
+          <path d="M286 86 q14-8 22 4 M296 110 q12-2 16 8" stroke="#8aa28f" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          <path d="M62 96 q-14-6 -10-20 q14 2 10 20Z M52 130 q-16 0 -18-14 q16-4 18 14Z" fill="#8aa28f"/>
+          <circle cx="180" cy="116" r="40" fill="#fdfbf6" stroke="#33403a" stroke-width="3"/>
+          <path d="M142 112 q-2-40 38-40 q40 0 38 40 q-6-22 -38-22 q-32 0 -38 22Z" fill="#5c4a38" stroke="#33403a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M218 112 q12 14 6 32 q-10-6 -8-22" fill="#5c4a38" stroke="#33403a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M168 122 q3 3 7 0 M196 122 q3 3 7 0" stroke="#33403a" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M174 138 q6 6 14 0" stroke="#c2543c" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="158" cy="130" r="6" fill="#f0cabb" opacity=".85"/>
+          <circle cx="204" cy="130" r="6" fill="#f0cabb" opacity=".85"/>
+          <path d="M128 268 q8-78 52-78 q44 0 52 78Z" fill="#fdfbf6" stroke="#33403a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M180 156 v54 M162 162 l18 24 18-24" stroke="#33403a" stroke-width="2.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M166 172 q-2 26 14 36 q16-10 14-36" fill="none" stroke="#33596b" stroke-width="3.4" stroke-linecap="round"/>
+          <circle cx="180" cy="214" r="7" fill="#33596b"/>
+          <!-- クリップボード -->
+          <path d="M218 210 l44-10 8 44 -44 10Z" fill="#fdfbf6" stroke="#33403a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M236 204 l14-3 2 8 -14 3Z" fill="#dde5da" stroke="#33403a" stroke-width="2.4" stroke-linejoin="round"/>
+          <path d="M230 222 l26-6 M232 232 l26-6 M235 242 l16-4" stroke="#8aa28f" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M226 234 q-10 14 -26 12" stroke="#33403a" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M76 250 q60 16 208 0" stroke="#c9d3c5" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M118 78 q-6-10 4-16 q8 8 -4 16Z" fill="#c2543c" opacity=".75"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 訪問看護師の1日 ============ -->
+<section class="day" id="day">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">One Day</span>
+      <h2 class="sec-title">訪問看護師の1日</h2>
+      <div class="sprig"><svg viewBox="0 0 54 22" style="color:var(--sage)"><use href="#def-sprig"/></svg></div>
+    </div>
+    <div class="timeline">
+      <div class="tstop reveal">
+        <div class="tstop-time">8:30</div>
+        <div class="tstop-name">朝の準備・申し送り</div>
+        <div class="tstop-dot"></div>
+        <p>その日の訪問予定を確認し、チームで情報共有をします。</p>
+        <div class="tstop-art">
+          <svg viewBox="0 0 108 108" role="img" aria-label="朝のミーティング">
+            <rect width="108" height="108" fill="#fdfbf6"/>
+            <circle cx="54" cy="58" r="42" fill="#eef1e8"/>
+            <circle cx="80" cy="26" r="11" fill="#f4e3d4" stroke="#c2543c" stroke-width="2"/>
+            <path d="M80 20v6l4 3" stroke="#c2543c" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <rect x="30" y="44" width="48" height="34" rx="4" fill="#fdfbf6" stroke="#33403a" stroke-width="2.4"/>
+            <path d="M36 54h26M36 62h32M36 70h20" stroke="#8aa28f" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M24 86 q30 8 60 0" stroke="#c9d3c5" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="tstop reveal reveal-d1">
+        <div class="tstop-time">9:00</div>
+        <div class="tstop-name">1件目の訪問</div>
+        <div class="tstop-dot"></div>
+        <p>バイタルチェックやケア、服薬状況などを行います。</p>
+        <div class="tstop-art">
+          <svg viewBox="0 0 108 108" role="img" aria-label="1件目の訪問">
+            <rect width="108" height="108" fill="#fdfbf6"/>
+            <circle cx="54" cy="58" r="42" fill="#f4ece2"/>
+            <path d="M30 52 54 32l24 20" fill="none" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M36 50v32h36V50" fill="#fdfbf6" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round"/>
+            <rect x="48" y="62" width="12" height="20" rx="1.5" fill="#dde5da" stroke="#33403a" stroke-width="2.2"/>
+            <path d="M65 60 q4-5 8 0 q4-5 8 0" stroke="#c2543c" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0"/>
+            <path d="M54 26 q-4-6 2-9 q5 5 -2 9Z" fill="#8aa28f"/>
+          </svg>
+        </div>
+      </div>
+      <div class="tstop reveal reveal-d2">
+        <div class="tstop-time">10:30</div>
+        <div class="tstop-name">移動・記録</div>
+        <div class="tstop-dot"></div>
+        <p>移動の合間に記録を行い、次の訪問の準備をします。</p>
+        <div class="tstop-art">
+          <svg viewBox="0 0 108 108" role="img" aria-label="自転車で移動">
+            <rect width="108" height="108" fill="#fdfbf6"/>
+            <circle cx="54" cy="58" r="42" fill="#eef1e8"/>
+            <circle cx="36" cy="72" r="13" fill="none" stroke="#33403a" stroke-width="2.6"/>
+            <circle cx="76" cy="72" r="13" fill="none" stroke="#33403a" stroke-width="2.6"/>
+            <path d="M36 72 50 48h14l12 24" fill="none" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M50 48 60 72H42Z" fill="none" stroke="#33403a" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M46 44h10M62 44l4 4" stroke="#c2543c" stroke-width="2.6" stroke-linecap="round"/>
+            <rect x="56" y="52" width="13" height="10" rx="2.5" fill="#f4e3d4" stroke="#c2543c" stroke-width="2"/>
+            <path d="M20 38 q6-4 12 0 M76 30 q6-4 12 0" stroke="#8aa28f" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="tstop reveal reveal-d3">
+        <div class="tstop-time">12:00</div>
+        <div class="tstop-name">お昼休憩</div>
+        <div class="tstop-dot"></div>
+        <p>しっかり休息を取り、午後に備えます。</p>
+        <div class="tstop-art">
+          <svg viewBox="0 0 108 108" role="img" aria-label="お昼休憩">
+            <rect width="108" height="108" fill="#fdfbf6"/>
+            <circle cx="54" cy="58" r="42" fill="#f4ece2"/>
+            <ellipse cx="54" cy="74" rx="26" ry="7" fill="#fdfbf6" stroke="#33403a" stroke-width="2.4"/>
+            <path d="M34 72 q0-18 20-18 q20 0 20 18" fill="#fdfbf6" stroke="#33403a" stroke-width="2.4"/>
+            <path d="M46 48 q-3-6 2-9 M56 46 q-3-6 2-9 M66 48 q-3-6 2-9" stroke="#8aa28f" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <circle cx="82" cy="40" r="8" fill="none" stroke="#c2543c" stroke-width="2.2"/>
+            <path d="M82 36v4l3 2" stroke="#c2543c" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="tstop reveal reveal-d4">
+        <div class="tstop-time">13:00</div>
+        <div class="tstop-name">2〜3件目の訪問</div>
+        <div class="tstop-dot"></div>
+        <p>状態確認やケア、家族へのアドバイスなどを行います。</p>
+        <div class="tstop-art">
+          <svg viewBox="0 0 108 108" role="img" aria-label="午後の訪問">
+            <rect width="108" height="108" fill="#fdfbf6"/>
+            <circle cx="54" cy="58" r="42" fill="#eef1e8"/>
+            <circle cx="40" cy="48" r="11" fill="#fdfbf6" stroke="#33403a" stroke-width="2.4"/>
+            <path d="M30 46 q0-10 10-10 q10 0 10 10 q-3-5 -10-5 q-7 0 -10 5Z" fill="#9a7d5e" stroke="#33403a" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M26 82 q2-22 14-22 q12 0 14 22Z" fill="#fdfbf6" stroke="#33403a" stroke-width="2.4" stroke-linejoin="round"/>
+            <circle cx="70" cy="50" r="11" fill="#fdfbf6" stroke="#33403a" stroke-width="2.4"/>
+            <path d="M60 48 q-1-10 10-10 q11 0 10 10 q-3-4 -10-4 q-7 0 -10 4Z" fill="#dde5da" stroke="#33403a" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M56 84 q2-21 14-21 q12 0 14 21Z" fill="#cdb6d6" stroke="#33403a" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M50 30 q4-5 9 0" stroke="#c2543c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="tstop reveal reveal-d5">
+        <div class="tstop-time">16:30</div>
+        <div class="tstop-name">カンファレンス・記録</div>
+        <div class="tstop-dot"></div>
+        <p>チームで情報共有し、記録をまとめて終了です。</p>
+        <div class="tstop-art">
+          <svg viewBox="0 0 108 108" role="img" aria-label="カンファレンスと記録">
+            <rect width="108" height="108" fill="#fdfbf6"/>
+            <circle cx="54" cy="58" r="42" fill="#f4ece2"/>
+            <rect x="28" y="40" width="40" height="28" rx="3" fill="#fdfbf6" stroke="#33403a" stroke-width="2.4"/>
+            <path d="M24 72 h48 l-4 6 h-40Z" fill="#dde5da" stroke="#33403a" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M34 48h22M34 55h26M34 62h16" stroke="#8aa28f" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M74 44 l10-10 4 4 -10 10 -5 1Z" fill="#f4e3d4" stroke="#c2543c" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 暮らしの中で支える看護 ============ -->
+<section class="support" id="support">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Support</span>
+      <h2 class="sec-title">暮らしの中で支える看護</h2>
+      <p class="sec-lede">利用者さんやご家族の思いに寄り添い、その人らしい生活を支えます。</p>
+    </div>
+    <div class="support-grid">
+      <article class="scard reveal">
+        <div class="scard-art">
+          <svg viewBox="0 0 240 140" role="img" aria-label="日々の健康観察">
+            <circle cx="86" cy="56" r="22" fill="#fdfbf6" stroke="#33403a" stroke-width="2.6"/>
+            <path d="M65 53 q0-21 21-21 q21 0 21 21 q-5-11 -21-11 q-16 0 -21 11Z" fill="#9a7d5e" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M79 59 q2 2 5 0 M92 59 q2 2 5 0" stroke="#33403a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M81 68 q5 4 10 0" stroke="#c2543c" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M58 124 q5-44 28-44 q23 0 28 44Z" fill="#fdfbf6" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M80 90 q-2 18 6 26" stroke="#33596b" stroke-width="2.8" fill="none" stroke-linecap="round" opacity="0"/>
+            <path d="M114 96 q16-4 28-2" stroke="#33403a" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <rect x="142" y="68" width="52" height="40" rx="8" fill="#fdfbf6" stroke="#33596b" stroke-width="2.6"/>
+            <path d="M150 90 h9 l5-11 6 17 4-9 h12" fill="none" stroke="#c2543c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M196 48 q10 10 0 20 q-10-10 0-20Z" fill="#8aa28f"/>
+            <path d="M36 128 q86 10 172 0" stroke="#caa68e" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="scard-body">
+          <h3>日々の健康を守る</h3>
+          <p>健康状態や症状の観察。小さな変化にも気づき、再発予防につなげます。</p>
+        </div>
+      </article>
+      <article class="scard reveal reveal-d1">
+        <div class="scard-art">
+          <svg viewBox="0 0 240 140" role="img" aria-label="ご家族の相談に応じる">
+            <circle cx="70" cy="52" r="20" fill="#fdfbf6" stroke="#33403a" stroke-width="2.6"/>
+            <path d="M51 49 q0-19 19-19 q19 0 19 19 q-5-10 -19-10 q-14 0 -19 10Z" fill="#5c4a38" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M64 55 q2 2 4 0 M76 55 q2 2 4 0" stroke="#33403a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M66 63 q4 4 9 0" stroke="#c2543c" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M44 122 q4-42 26-42 q22 0 26 42Z" fill="#fdfbf6" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round"/>
+            <circle cx="168" cy="54" r="20" fill="#fdfbf6" stroke="#33403a" stroke-width="2.6"/>
+            <path d="M149 51 q-2-18 19-18 q21 0 19 18 q-5-9 -19-9 q-14 0 -19 9Z" fill="#9a7d5e" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M162 57 q2 2 4 0 M174 57 q2 2 4 0" stroke="#33403a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M164 65 q4 4 9 0" stroke="#c2543c" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M142 122 q4-40 26-40 q22 0 26 40Z" fill="#f4e3d4" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M104 88 q16 10 32 0" stroke="#33403a" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0"/>
+            <path d="M112 40 q8-7 16 0" stroke="#8aa28f" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M116 30 q4-4 8 0" stroke="#8aa28f" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".6"/>
+            <path d="M30 128 q90 10 180 0" stroke="#c9d3c5" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="scard-body">
+          <h3>ご家族の支えになる</h3>
+          <p>不安や悩みに寄り添い、介護方法のアドバイスや相談に応じます。</p>
+        </div>
+      </article>
+      <article class="scard reveal reveal-d2">
+        <div class="scard-art">
+          <svg viewBox="0 0 240 140" role="img" aria-label="その人らしい時間を支える">
+            <path d="M150 118 q-4-56 32-58 q34 2 30 58Z" fill="#f4e3d4" stroke="#caa68e" stroke-width="2.6" stroke-linejoin="round"/>
+            <circle cx="180" cy="48" r="19" fill="#fdfbf6" stroke="#33403a" stroke-width="2.6"/>
+            <path d="M162 46 q-2-17 18-17 q20 0 18 17 q-5-8 -18-8 q-13 0 -18 8Z" fill="#dde5da" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M174 50 q2 2 4 0 M186 50 q2 2 4 0" stroke="#33403a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M176 58 q4 4 8 0" stroke="#c2543c" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <circle cx="64" cy="56" r="19" fill="#fdfbf6" stroke="#33403a" stroke-width="2.6"/>
+            <path d="M46 54 q0-18 18-18 q18 0 18 18 q-4-9 -18-9 q-14 0 -18 9Z" fill="#9a7d5e" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M58 59 q2 2 4 0 M70 59 q2 2 4 0" stroke="#33403a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M60 67 q4 4 8 0" stroke="#c2543c" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M40 120 q4-40 24-40 q20 0 24 40Z" fill="#fdfbf6" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M88 92 q30 8 56 4" stroke="#33403a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M120 64 q-6-8 0-13 q6 5 0 13Z" fill="#c2543c"/>
+            <path d="M30 126 q90 10 180 0" stroke="#c9d3c5" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="scard-body">
+          <h3>その人らしい時間を大切に</h3>
+          <p>終末期のケアや看取りまで、思いに寄り添い、穏やかな時間を支えます。</p>
+        </div>
+      </article>
+      <article class="scard reveal reveal-d3">
+        <div class="scard-art">
+          <svg viewBox="0 0 240 140" role="img" aria-label="多職種と連携する看護師">
+            <circle cx="120" cy="52" r="21" fill="#fdfbf6" stroke="#33403a" stroke-width="2.6"/>
+            <path d="M100 49 q0-20 20-20 q20 0 20 20 q-5-10 -20-10 q-15 0 -20 10Z" fill="#5c4a38" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M113 55 q2 2 5 0 M126 55 q2 2 5 0" stroke="#33403a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M115 64 q5 4 10 0" stroke="#c2543c" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M92 122 q5-42 28-42 q23 0 28 42Z" fill="#fdfbf6" stroke="#33403a" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M116 84 q-2 16 4 24" stroke="#33596b" stroke-width="2.8" fill="none" stroke-linecap="round" opacity="0"/>
+            <circle cx="44" cy="76" r="15" fill="#eef1e8" stroke="#8aa28f" stroke-width="2.4"/>
+            <path d="M44 70 v8 M40 74 h8" stroke="#2c4a3b" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="196" cy="76" r="15" fill="#f4e3d4" stroke="#caa68e" stroke-width="2.4"/>
+            <path d="M190 76 q6-8 12 0 q-6 8 -12 0Z" fill="none" stroke="#c2543c" stroke-width="2.2"/>
+            <path d="M62 80 q16 6 28 6 M178 80 q-16 6 -28 6" stroke="#8aa28f" stroke-width="2.2" stroke-dasharray="1 6" stroke-linecap="round" fill="none"/>
+            <path d="M30 128 q90 10 180 0" stroke="#c9d3c5" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="scard-body">
+          <h3>安心につなぐ連携</h3>
+          <p>医師や多職種と連携し、切れ目のない支援を実現します。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ よくある不安 ============ -->
+<section class="faq" id="faq">
+  <div class="wrap faq-in">
+    <div class="faq-side reveal">
+      <div class="sec-head">
+        <span class="sec-eyebrow">Q&amp;A</span>
+        <h2 class="sec-title">はじめてでも<br>大丈夫？</h2>
+        <div class="sprig" style="justify-content:flex-start"><svg viewBox="0 0 54 22" style="color:var(--sage)"><use href="#def-sprig"/></svg></div>
+      </div>
+      <p>よくある不安や疑問にお答えします。</p>
+      <div class="faq-side-art">
+        <!-- バッグを持つ看護師 -->
+        <svg viewBox="0 0 300 340" role="img" aria-label="訪問バッグを持つ看護師">
+          <ellipse cx="150" cy="180" rx="128" ry="140" fill="#eef1e8"/>
+          <path d="M236 96 q14-8 24 2 M242 124 q14-2 18 10" stroke="#8aa28f" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          <path d="M56 110 q-14-4 -12-18 q14 0 12 18Z M50 144 q-16 2 -20-12 q16-6 20 12Z" fill="#8aa28f"/>
+          <circle cx="150" cy="92" r="36" fill="#fdfbf6" stroke="#33403a" stroke-width="3"/>
+          <path d="M116 88 q-2-36 34-36 q36 0 34 36 q-6-20 -34-20 q-28 0 -34 20Z" fill="#9a7d5e" stroke="#33403a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M184 88 q12 12 6 30 q-10-6 -8-20" fill="#9a7d5e" stroke="#33403a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M140 96 q3 3 6 0 M164 96 q3 3 6 0" stroke="#33403a" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M145 112 q6 5 13 0" stroke="#c2543c" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="130" cy="104" r="6" fill="#f0cabb" opacity=".85"/>
+          <circle cx="172" cy="104" r="6" fill="#f0cabb" opacity=".85"/>
+          <path d="M104 290 q8-86 46-86 q38 0 46 86Z" fill="#fdfbf6" stroke="#33403a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M150 128 v66 M133 134 l17 26 17-26" stroke="#33403a" stroke-width="2.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M137 144 q-2 28 13 38 q15-10 13-38" fill="none" stroke="#33596b" stroke-width="3.2" stroke-linecap="round"/>
+          <circle cx="150" cy="188" r="7" fill="#33596b"/>
+          <!-- 訪問バッグ -->
+          <path d="M186 222 q14 2 18 18 l4 30 q-30 8 -52 2" fill="none" stroke="#33403a" stroke-width="3" stroke-linecap="round" opacity="0"/>
+          <path d="M196 236 h44 q6 0 6 8 l-2 28 q0 8 -8 8 h-38 q-8 0 -8-8 l-2-28 q0-8 8-8Z" fill="#dde5da" stroke="#33403a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M208 236 q0-12 10-12 q10 0 10 12" fill="none" stroke="#33403a" stroke-width="3" stroke-linecap="round"/>
+          <path d="M212 254 h12 M218 248 v12" stroke="#c2543c" stroke-width="3" stroke-linecap="round"/>
+          <path d="M184 230 q8-4 12 4" stroke="#33403a" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M64 296 q90 14 176 0" stroke="#c9d3c5" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="faq-list">
+      <details class="qa reveal" open>
+        <summary>
+          <span class="q-mark">Q</span>
+          <span class="q-text">一人で訪問するのが不安です</span>
+          <span class="q-toggle"></span>
+        </summary>
+        <div class="qa-a">
+          <span class="a-mark">A</span>
+          <p>最初は先輩と同行訪問のOJTスタート。いつでも相談できる体制が整っています。</p>
+        </div>
+      </details>
+      <details class="qa reveal reveal-d1" open>
+        <summary>
+          <span class="q-mark">Q</span>
+          <span class="q-text">急変対応が心配です</span>
+          <span class="q-toggle"></span>
+        </summary>
+        <div class="qa-a">
+          <span class="a-mark">A</span>
+          <p>緊急時の連絡体制やマニュアルが整備されており、チームで対応します。</p>
+        </div>
+      </details>
+      <details class="qa reveal reveal-d2" open>
+        <summary>
+          <span class="q-mark">Q</span>
+          <span class="q-text">病院勤務との違いが知りたい</span>
+          <span class="q-toggle"></span>
+        </summary>
+        <div class="qa-a">
+          <span class="a-mark">A</span>
+          <p>病棟は「治す医療」、訪問は「生活を支える医療」。その人らしい暮らしを支えます。</p>
+        </div>
+      </details>
+      <details class="qa reveal reveal-d3" open>
+        <summary>
+          <span class="q-mark">Q</span>
+          <span class="q-text">ブランクがあっても大丈夫ですか？</span>
+          <span class="q-toggle"></span>
+        </summary>
+        <div class="qa-a">
+          <span class="a-mark">A</span>
+          <p>研修やサポート制度があり、ブランクがある方も安心して復帰されています。</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 先輩の声 ============ -->
+<section class="voices" id="voices">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Voices</span>
+      <h2 class="sec-title">先輩の声</h2>
+      <p class="sec-lede">訪問看護を選んだ先輩たちのリアルな声をご紹介します。</p>
+    </div>
+    <div class="voice-grid">
+      <article class="vcard reveal">
+        <span class="quote-mark"><svg viewBox="0 0 18 18" fill="currentColor"><path d="M3 10.5C3 6.9 5.4 4.2 8.4 3l.8 1.6C7.3 5.5 6.2 7 6 8.5c.2-.1.5-.1.8-.1 1.5 0 2.6 1.1 2.6 2.7 0 1.7-1.2 2.9-2.9 2.9C4.4 14 3 12.6 3 10.5Zm7.6 0c0-3.6 2.4-6.3 5.4-7.5l.8 1.6c-1.9.9-3 2.4-3.2 3.9.2-.1.5-.1.8-.1 1.5 0 2.6 1.1 2.6 2.7 0 1.7-1.2 2.9-2.9 2.9-2.1 0-3.5-1.4-3.5-3.5Z"/></svg></span>
+        <blockquote>利用者さんの人生に寄り添えることが、訪問看護ならではの魅力です。</blockquote>
+        <div class="vcard-person">
+          <span class="vcard-avatar">
+            <svg viewBox="0 0 56 56"><rect width="56" height="56" fill="#eef1e8"/><circle cx="28" cy="24" r="11" fill="#fdfbf6" stroke="#33403a" stroke-width="2"/><path d="M17.5 22.5 q0-10.5 10.5-10.5 q10.5 0 10.5 10.5 q-3-5.5 -10.5-5.5 q-7.5 0 -10.5 5.5Z" fill="#9a7d5e" stroke="#33403a" stroke-width="2" stroke-linejoin="round"/><path d="M24 26 q1.5 1.5 3 0 M30.5 26 q1.5 1.5 3 0" stroke="#33403a" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M25 31 q3 2.5 6.5 0" stroke="#c2543c" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M14 56 q3-20 14-20 q11 0 14 20Z" fill="#fdfbf6" stroke="#33403a" stroke-width="2"/></svg>
+          </span>
+          <div>
+            <div class="nm">Aさん（30代）</div>
+            <div class="role">訪問看護歴5年・訪問看護ステーション勤務</div>
+          </div>
+        </div>
+      </article>
+      <article class="vcard reveal reveal-d1">
+        <span class="quote-mark"><svg viewBox="0 0 18 18" fill="currentColor"><path d="M3 10.5C3 6.9 5.4 4.2 8.4 3l.8 1.6C7.3 5.5 6.2 7 6 8.5c.2-.1.5-.1.8-.1 1.5 0 2.6 1.1 2.6 2.7 0 1.7-1.2 2.9-2.9 2.9C4.4 14 3 12.6 3 10.5Zm7.6 0c0-3.6 2.4-6.3 5.4-7.5l.8 1.6c-1.9.9-3 2.4-3.2 3.9.2-.1.5-.1.8-.1 1.5 0 2.6 1.1 2.6 2.7 0 1.7-1.2 2.9-2.9 2.9-2.1 0-3.5-1.4-3.5-3.5Z"/></svg></span>
+        <blockquote>看護師としての視野が広がり、毎日成長を実感しています。</blockquote>
+        <div class="vcard-person">
+          <span class="vcard-avatar">
+            <svg viewBox="0 0 56 56"><rect width="56" height="56" fill="#f4ece2"/><circle cx="28" cy="24" r="11" fill="#fdfbf6" stroke="#33403a" stroke-width="2"/><path d="M17.5 23 q-1-11 10.5-11 q11.5 0 10.5 11 q-3-6 -10.5-6 q-7.5 0 -10.5 6Z" fill="#5c4a38" stroke="#33403a" stroke-width="2" stroke-linejoin="round"/><path d="M38 23 q3 4 1.5 9 q-3-2 -2.5-7" fill="#5c4a38" stroke="#33403a" stroke-width="1.8" stroke-linejoin="round"/><path d="M24 26 q1.5 1.5 3 0 M30.5 26 q1.5 1.5 3 0" stroke="#33403a" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M25 31 q3 2.5 6.5 0" stroke="#c2543c" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M14 56 q3-20 14-20 q11 0 14 20Z" fill="#dde5da" stroke="#33403a" stroke-width="2"/></svg>
+          </span>
+          <div>
+            <div class="nm">Bさん（40代）</div>
+            <div class="role">訪問看護歴10年・訪問看護ステーション管理者</div>
+          </div>
+        </div>
+      </article>
+      <article class="vcard reveal reveal-d2">
+        <span class="quote-mark"><svg viewBox="0 0 18 18" fill="currentColor"><path d="M3 10.5C3 6.9 5.4 4.2 8.4 3l.8 1.6C7.3 5.5 6.2 7 6 8.5c.2-.1.5-.1.8-.1 1.5 0 2.6 1.1 2.6 2.7 0 1.7-1.2 2.9-2.9 2.9C4.4 14 3 12.6 3 10.5Zm7.6 0c0-3.6 2.4-6.3 5.4-7.5l.8 1.6c-1.9.9-3 2.4-3.2 3.9.2-.1.5-.1.8-.1 1.5 0 2.6 1.1 2.6 2.7 0 1.7-1.2 2.9-2.9 2.9-2.1 0-3.5-1.4-3.5-3.5Z"/></svg></span>
+        <blockquote>家族と両立しながら、やりがいのある仕事ができています。</blockquote>
+        <div class="vcard-person">
+          <span class="vcard-avatar">
+            <svg viewBox="0 0 56 56"><rect width="56" height="56" fill="#eef1e8"/><circle cx="28" cy="24" r="11" fill="#fdfbf6" stroke="#33403a" stroke-width="2"/><path d="M17.5 22.5 q0-10.5 10.5-10.5 q10.5 0 10.5 10.5 q-3-5 -10.5-5 q-7.5 0 -10.5 5Z" fill="#7a5b43" stroke="#33403a" stroke-width="2" stroke-linejoin="round"/><path d="M18 23 q-3 4 -1.5 9 q3-2 2.5-7" fill="#7a5b43" stroke="#33403a" stroke-width="1.8" stroke-linejoin="round"/><path d="M24 26 q1.5 1.5 3 0 M30.5 26 q1.5 1.5 3 0" stroke="#33403a" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M25 31 q3 2.5 6.5 0" stroke="#c2543c" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M14 56 q3-20 14-20 q11 0 14 20Z" fill="#f4e3d4" stroke="#33403a" stroke-width="2"/></svg>
+          </span>
+          <div>
+            <div class="nm">Cさん（30代）</div>
+            <div class="role">訪問看護歴3年・時短勤務中</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="cta">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div class="cta-copy">
+        <h2>訪問看護という選択肢を、<br>もっと身近に。</h2>
+        <p>働き方を知ることから、次の一歩が始まります。</p>
+        <div class="cta-btns">
+          <a class="btn btn-cream" href="#about">訪問看護をもっと知る <span class="arr">→</span></a>
+          <a class="btn btn-line" href="#top">資料を見る <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="cta-art reveal reveal-d2">
+        <div class="frame">
+          <!-- お茶の時間のイラスト -->
+          <svg viewBox="0 0 420 330" role="img" aria-label="利用者と看護師が穏やかに過ごすイラスト">
+            <rect width="420" height="330" fill="#fdfbf6"/>
+            <ellipse cx="210" cy="180" rx="190" ry="148" fill="#f4ece2"/>
+            <path d="M330 130 q14-8 24 2 M338 158 q14-2 18 10" stroke="#8aa28f" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <path d="M76 132 q-14-4 -12-18 q14 0 12 18Z" fill="#8aa28f"/>
+            <!-- テーブル -->
+            <ellipse cx="210" cy="252" rx="96" ry="20" fill="#fdfbf6" stroke="#caa68e" stroke-width="2.8"/>
+            <ellipse cx="180" cy="244" rx="14" ry="6" fill="#dde5da" stroke="#33403a" stroke-width="2.2"/>
+            <ellipse cx="242" cy="244" rx="14" ry="6" fill="#f4e3d4" stroke="#33403a" stroke-width="2.2"/>
+            <path d="M176 232 q-2-6 3-8 M186 232 q-2-6 3-8 M238 232 q-2-6 3-8 M248 232 q-2-6 3-8" stroke="#8aa28f" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- 利用者 -->
+            <circle cx="140" cy="150" r="29" fill="#fdfbf6" stroke="#33403a" stroke-width="2.8"/>
+            <path d="M113 144 q-3-26 27-26 q30 0 27 26 q-6-12 -27-12 q-21 0 -27 12Z" fill="#dde5da" stroke="#33403a" stroke-width="2.8" stroke-linejoin="round"/>
+            <path d="M130 154 q2.5 2.5 6 0 M150 154 q2.5 2.5 6 0" stroke="#33403a" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <path d="M134 167 q6 5 12 0" stroke="#c2543c" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <circle cx="124" cy="160" r="5" fill="#f0cabb" opacity=".85"/>
+            <circle cx="158" cy="160" r="5" fill="#f0cabb" opacity=".85"/>
+            <path d="M104 240 q6-56 36-56 q30 0 36 56Z" fill="#cdb6d6" stroke="#33403a" stroke-width="2.8" stroke-linejoin="round"/>
+            <!-- 看護師 -->
+            <circle cx="282" cy="146" r="29" fill="#fdfbf6" stroke="#33403a" stroke-width="2.8"/>
+            <path d="M255 142 q-2-27 27-27 q29 0 27 27 q-5-14 -27-14 q-22 0 -27 14Z" fill="#9a7d5e" stroke="#33403a" stroke-width="2.8" stroke-linejoin="round"/>
+            <path d="M308 142 q9 11 4 25 q-8-5 -7-17" fill="#9a7d5e" stroke="#33403a" stroke-width="2.8" stroke-linejoin="round"/>
+            <path d="M272 150 q2.5 2.5 6 0 M292 150 q2.5 2.5 6 0" stroke="#33403a" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <path d="M276 163 q6 5 12 0" stroke="#c2543c" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <circle cx="266" cy="156" r="5" fill="#f0cabb" opacity=".85"/>
+            <circle cx="300" cy="156" r="5" fill="#f0cabb" opacity=".85"/>
+            <path d="M246 238 q6-54 36-54 q30 0 36 54Z" fill="#fdfbf6" stroke="#33403a" stroke-width="2.8" stroke-linejoin="round"/>
+            <path d="M268 190 q-2 22 12 30 q14-8 12-30" fill="none" stroke="#33596b" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="280" cy="224" r="6" fill="#33596b"/>
+            <path d="M210 110 q-7-9 0-15 q7 6 0 15Z" fill="#c2543c"/>
+            <path d="M228 96 q-5-6 0-10 q5 4 0 10Z" fill="#c2543c" opacity=".65"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ フッター ============ -->
+<footer class="footer">
+  <div class="wrap footer-in">
+    <a class="brand" href="#top">
+      <svg class="brand-mark" viewBox="0 0 34 34" style="color:var(--pine)"><use href="#def-logo"/></svg>
+      <span>
+        <span class="brand-name">訪看<em>ワークス</em></span>
+        <span class="brand-sub" style="display:block">訪問看護という働き方</span>
+      </span>
+    </a>
+    <nav class="fnav" aria-label="フッターナビゲーション">
+      <a href="#about">訪問看護とは</a>
+      <a href="#reasons">魅力・やりがい</a>
+      <a href="#day">働き方・1日の流れ</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#faq">よくある不安</a>
+    </nav>
+    <a class="btn btn-pine" href="#cta">資料を見る <span class="arr">→</span></a>
+    <p class="copyright">&copy; 2026 訪看ワークス — 訪問看護という働き方</p>
+  </div>
+</footer>
+
+<script>
+// ヘッダーのスクロール状態
+const header = document.getElementById('header');
+const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+// モバイルメニュー
+const menuBtn = document.getElementById('menuBtn');
+const gnav = document.getElementById('gnav');
+menuBtn.addEventListener('click', () => {
+  const open = gnav.classList.toggle('is-open');
+  menuBtn.classList.toggle('is-open', open);
+  menuBtn.setAttribute('aria-expanded', String(open));
+});
+gnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  gnav.classList.remove('is-open');
+  menuBtn.classList.remove('is-open');
+  menuBtn.setAttribute('aria-expanded','false');
+}));
+
+// スクロール出現
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+  });
+}, {threshold:.12, rootMargin:'0px 0px -40px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
