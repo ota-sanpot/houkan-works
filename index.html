@@ -79,27 +79,68 @@ button { font: inherit; color: inherit; }
 .top .btn { margin-left: auto; }
 @media (min-width: 900px) { .top nav { display: flex; } .top .btn { margin-left: 8px; } }
 
-/* ── ファーストビュー ── */
-.hero { position: relative; padding: 40px 0 56px; overflow: hidden; }
-.hero::before { /* 記録用紙の罫線 */
-  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: repeating-linear-gradient(0deg, transparent 0 35px, rgba(45,75,110,.07) 35px 36px);
-  mask: linear-gradient(180deg, #000 0 70%, transparent);
+/* ── ファーストビュー（深い緑から藍の大きなパネル） ── */
+.hero { position: relative; margin: 12px; border-radius: 28px; overflow: hidden; color: #fff; padding: 34px 0 30px;
+  background:
+    radial-gradient(60% 70% at 85% 20%, rgba(83,140,190,.35), transparent 70%),
+    radial-gradient(70% 80% at 0% 100%, rgba(58,125,105,.55), transparent 70%),
+    linear-gradient(135deg, #1f4c40 0%, #1d3f4f 55%, #1d3550 100%);
+  box-shadow: 0 30px 60px -40px rgba(29,53,80,.8);
 }
-.hero-grid { display: grid; gap: 36px; align-items: center; }
+.hero::before { /* 記録用紙の罫線（白で薄く） */
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent 0 35px, rgba(255,255,255,.055) 35px 36px);
+  mask: linear-gradient(180deg, #000, rgba(0,0,0,.35));
+}
+.hero::after { /* 右上の大きな円 */
+  content: ''; position: absolute; right: -150px; top: -150px; width: 300px; height: 300px; border-radius: 50%;
+  border: 34px solid rgba(255,255,255,.045); pointer-events: none;
+}
+@media (min-width: 960px) { .hero::after { right: -120px; top: -120px; width: 420px; height: 420px; border-width: 46px; } }
+.hero > .wrap { position: relative; z-index: 1; }
+.hero-grid { display: grid; gap: 34px; align-items: center; }
 .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; letter-spacing: .14em; color: var(--pine); margin: 0 0 14px; }
 .eyebrow::before { content: ''; width: 22px; height: 2px; background: currentColor; }
-.hero h1 { margin: 0 0 18px; font-weight: 900; font-size: clamp(30px, 6.4vw, 56px); line-height: 1.32; letter-spacing: .01em; }
-.hero h1 .q { display: block; font-size: .62em; font-weight: 700; color: var(--ink-2); margin-bottom: 6px; letter-spacing: .02em; }
-.hero h1 .draw { display: inline-block; white-space: nowrap; background-image: linear-gradient(var(--marker), var(--marker)); background-repeat: no-repeat; background-position: 0 88%; background-size: 0% 38%; animation: draw .9s .6s cubic-bezier(.6,.1,.2,1) forwards; }
-@keyframes draw { to { background-size: 100% 38%; } }
-.hero .sub { font-size: clamp(15.5px, 1.8vw, 18px); color: var(--ink-2); margin: 0 0 24px; max-width: 34em; }
+.live { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 18px; padding: 5px 14px 5px 10px; border-radius: 999px;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.22); font-size: 13px; font-weight: 700; letter-spacing: .06em; }
+.live i { width: 9px; height: 9px; border-radius: 50%; background: #7fe0b5; box-shadow: 0 0 0 0 rgba(127,224,181,.7); animation: pulse 1.8s infinite; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(127,224,181,0); } 100% { box-shadow: 0 0 0 0 rgba(127,224,181,0); } }
+.live span { opacity: .75; font-weight: 500; }
+@media (max-width: 600px) { .live span { display: none; } }
+/* 入れ替わる「迷い」 */
+.ask { position: relative; margin: 0 0 8px; min-height: 1.5em; white-space: nowrap; font-size: clamp(14px, 4.3vw, 23px); font-weight: 700; line-height: 1.45; color: #cfe6dc; }
+.ask-q { display: inline-block; }
+.ask-q.out { animation: askOut .35s ease forwards; }
+.ask-q.in { animation: askIn .45s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes askOut { to { opacity: 0; transform: translateY(-10px); filter: blur(2px); } }
+@keyframes askIn { from { opacity: 0; transform: translateY(12px); filter: blur(2px); } to { opacity: 1; transform: none; filter: none; } }
+.ask .caret { display: inline-block; width: 2px; height: 1em; background: #cfe6dc; margin-left: 4px; vertical-align: -.12em; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.hero h1 { margin: 0 0 18px; font-weight: 900; font-size: clamp(32px, 6.6vw, 60px); line-height: 1.28; letter-spacing: .01em; text-wrap: balance; }
+.hero h1 .em { color: #f3d98b; }
+.hero h1 .draw { display: inline-block; white-space: nowrap; background-image: linear-gradient(90deg, rgba(243,217,139,.55), rgba(243,217,139,.25)); background-repeat: no-repeat; background-position: 0 94%; background-size: 0% 14%; animation: draw .9s .7s cubic-bezier(.6,.1,.2,1) forwards; }
+@keyframes draw { to { background-size: 100% 14%; } }
+.hero .sub { font-size: clamp(15.5px, 1.7vw, 17.5px); color: rgba(255,255,255,.86); margin: 0 0 26px; max-width: 33em; }
+.hero .sub b { color: #fff; }
 .hero .cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.points { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 22px 0 0; padding: 0; list-style: none; }
-.points li { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--ink-2); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; }
-.points li::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--pine); }
-.points li:nth-child(2)::before { background: var(--indigo); }
-.points li:nth-child(3)::before { background: var(--gold); }
+.hero .btn.primary { background: #fff; color: var(--pine-deep); border-color: #fff; min-height: 56px; padding: 0 30px; font-size: 16.5px; box-shadow: 0 16px 30px -14px rgba(0,0,0,.6); }
+.hero .btn.primary:hover { background: #f3f8f5; }
+.hero .btn.primary small { font-weight: 700; font-size: 12.5px; opacity: .7; }
+.hero .btn.ghost-w { background: transparent; color: #fff; border-color: rgba(255,255,255,.45); min-height: 56px; }
+.hero .btn.ghost-w:hover { background: rgba(255,255,255,.08); }
+.price-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 22px 0 0; font-size: 14px; color: rgba(255,255,255,.82); }
+.price-line strong { font-size: 26px; font-weight: 900; color: #fff; letter-spacing: -.01em; }
+.price-line strong small { font-size: 13px; font-weight: 700; margin-left: 4px; opacity: .85; }
+.price-line span { display: inline-flex; align-items: center; gap: 6px; }
+.price-line span::before { content: '✓'; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(127,224,181,.22); color: #9fe9c8; font-size: 11px; }
+/* 収録の数 */
+.counts { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 34px; border-radius: 18px; overflow: hidden; background: rgba(255,255,255,.14); }
+.counts div { background: rgba(16,36,40,.45); padding: 14px 16px; }
+.counts b { display: block; font-size: clamp(26px, 3.6vw, 36px); font-weight: 900; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.counts b small { font-size: .45em; margin-left: 3px; font-weight: 700; opacity: .8; }
+.counts span { font-size: 13px; color: rgba(255,255,255,.75); font-weight: 500; }
+.counts-note { margin: 8px 2px 0; font-size: 12px; color: rgba(255,255,255,.55); position: relative; z-index: 1; }
+@media (min-width: 720px) { .counts { grid-template-columns: repeat(4, 1fr); } }
 .rise { opacity: 0; transform: translateY(14px); animation: rise .7s cubic-bezier(.2,.7,.2,1) forwards; }
 .d1 { animation-delay: .05s } .d2 { animation-delay: .15s } .d3 { animation-delay: .25s } .d4 { animation-delay: .35s } .d5 { animation-delay: .5s }
 @keyframes rise { to { opacity: 1; transform: none; } }
@@ -112,7 +153,7 @@ button { font: inherit; color: inherit; }
   box-shadow: 0 40px 70px -30px rgba(29,39,35,.65), inset 0 0 0 2px #39463f;
   transform: rotate(-2.5deg);
 }
-.screen { border-radius: 30px; overflow: hidden; background: var(--paper); min-height: 500px; display: flex; flex-direction: column; }
+.screen { color: var(--ink); border-radius: 30px; overflow: hidden; background: var(--paper); min-height: 500px; display: flex; flex-direction: column; }
 .screen-bar { display: flex; align-items: center; gap: 8px; padding: 14px 16px 10px; border-bottom: 1px solid var(--line); font-weight: 700; font-size: 13px; }
 .screen-bar .brand-mark { width: 20px; height: 20px; border-radius: 6px; }
 .screen-body { padding: 14px 14px 18px; flex: 1; }
@@ -141,12 +182,28 @@ button { font: inherit; color: inherit; }
 .verdict.ng { background: var(--vermilion); }
 .explain { font-size: 13.5px; line-height: 1.8; margin: 0; }
 .basis-line { font-size: 11.5px; color: var(--indigo); margin: 8px 0 0; line-height: 1.6; }
-.sticker {
-  position: absolute; right: max(0px, calc(50% - 215px)); top: -6px; transform: rotate(6deg);
-  background: var(--gold); color: #fff; font-weight: 900; font-size: 13px; line-height: 1.35; text-align: center;
-  width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; box-shadow: var(--shadow);
+.stamp {
+  position: absolute; right: max(0px, calc(50% - 200px)); top: -8px; transform: rotate(8deg); z-index: 3;
+  width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center; text-align: center;
+  background: #e2b54f; color: #2a2208; font-weight: 900; font-size: 12px; line-height: 1.3; box-shadow: 0 14px 26px -12px rgba(0,0,0,.6);
+  outline: 2px dashed rgba(42,34,8,.35); outline-offset: -8px;
 }
-.sticker b { display: block; font-size: 24px; }
+.stamp b { display: block; font-size: 17px; }
+.floats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; position: relative; z-index: 2; }
+.floats .f3 { grid-column: 1 / -1; justify-self: center; }
+.float { background: #fffdf8; color: var(--ink); border-radius: 14px; padding: 10px 12px; box-shadow: 0 18px 34px -16px rgba(0,0,0,.55); font-size: 12px; line-height: 1.5; }
+.float p { margin: 0; }
+.float .ft { display: flex; align-items: center; gap: 6px; font-weight: 900; font-size: 13px; margin-bottom: 2px; }
+.float .ft i { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; font-style: normal; font-size: 11px; color: #fff; background: var(--indigo); }
+.float.f2 .ft i { background: var(--vermilion); }
+.float.f3 .ft i { background: var(--pine); }
+.float .src { color: var(--indigo); }
+.float .big { font-size: 24px; font-weight: 900; color: var(--vermilion); line-height: 1.1; }
+.float .mini-dots { display: flex; gap: 4px; margin-top: 4px; }
+.float .mini-dots span { padding: 1px 8px; border-radius: 999px; background: var(--paper-2); color: var(--ink-3); font-weight: 700; font-size: 11px; }
+.float .mini-dots .done { background: var(--pine-soft); color: var(--pine); }
+.float .mini-dots .now { background: var(--ink); color: #fff; }
+@keyframes bob { 50% { transform: translateY(-8px); } }
 
 /* ── セクション共通 ── */
 section.block { padding: 72px 0; position: relative; }
@@ -332,16 +389,21 @@ footer .disc { max-width: 46em; }
 
 /* PCのファーストビュー */
 @media (min-width: 960px) {
-  .hero { padding: 64px 0 84px; }
-  .hero-grid { grid-template-columns: 1.15fr .85fr; gap: 56px; }
-  .sticker { top: auto; bottom: 6px; right: max(0px, calc(50% - 230px)); }
+  .hero { margin: 16px 20px; border-radius: 36px; padding: 70px 0 44px; }
+  .hero-grid { grid-template-columns: 1.1fr .9fr; gap: 40px; }
+  .floats { display: block; margin: 0; position: absolute; inset: 0; pointer-events: none; }
+  .float { position: absolute; animation: bob 5s ease-in-out infinite; }
+  .float.f1 { left: -8%; top: 2%; animation-delay: -1s; }
+  .float.f2 { right: -4%; top: 44%; animation-delay: -2.5s; }
+  .float.f3 { left: -2%; bottom: 8%; animation-delay: -4s; }
+  .stamp { right: 2%; top: -4px; }
   section.block { padding: 96px 0; }
   .final { padding: 70px 40px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .rise, .reveal { opacity: 1; transform: none; }
-  .hero h1 .draw { background-size: 100% 38%; }
+  .hero h1 .draw { background-size: 100% 14%; }
 }
 </style>
 </head>
@@ -361,16 +423,15 @@ footer .disc { max-width: 46em; }
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow rise d1">訪問看護師のための学習アプリ</p>
-      <h1 class="rise d2"><span class="q">「これ、医療保険？ 介護保険？」</span>もう、<span class="draw">ひとりで迷わない。</span></h1>
-      <p class="sub rise d3">保険の振り分けや加算から、初回訪問、急変時の報告まで。訪問看護で迷いやすいところを、<b>根拠つきの解説・クイズ・現場のケース</b>で、スマホで1日5問から身につけます。</p>
+      <p class="live rise d1"><i aria-hidden="true"></i>先行案内 受付中<span>｜訪問看護師のための学習アプリ</span></p>
+      <p class="ask rise d2" aria-hidden="true"><span class="ask-q" data-ask>「これ、医療保険？ 介護保険？」</span><span class="caret"></span></p>
+      <h1 class="rise d2"><span class="sr">「これ、医療保険？ 介護保険？」</span>訪問看護の<span class="em">「迷う」</span>を、<br><span class="draw">「言い切れる」に。</span></h1>
+      <p class="sub rise d3">保険の振り分けや加算から、急変時の報告まで15ジャンル。<b>根拠つきの解説</b>と<b>1日5問のクイズ</b>、<b>現場のケース</b>で、移動の合間に身につけます。</p>
       <div class="cta rise d4">
-        <a class="btn primary" href="#waitlist" data-waitlist>先行案内を受け取る <span class="arrow">→</span></a>
-        <a class="btn" href="#try">1問ためしに解く</a>
+        <a class="btn primary" href="#waitlist" data-waitlist>先行案内を受け取る<small>無料</small> <span class="arrow">→</span></a>
+        <a class="btn ghost-w" href="#try">まず1問、解いてみる</a>
       </div>
-      <ul class="points rise d5" aria-label="特長">
-        <li>15ジャンル</li><li>根拠は告示・通知まで</li><li>¥4,980 買い切り</li>
-      </ul>
+      <p class="price-line rise d5"><strong>¥4,980<small>買い切り</small></strong><span>月額0円</span><span>改定の更新もずっと無料</span></p>
     </div>
 
     <div class="phone-stage rise d4" id="try">
@@ -387,8 +448,22 @@ footer .disc { max-width: 46em; }
           </div>
         </div>
       </div>
-      <div class="sticker" aria-hidden="true"><span>1日<b>5問</b>から</span></div>
+      <div class="stamp" aria-hidden="true"><span>令和8年度<b>改定対応</b></span></div>
+      <div class="floats" aria-hidden="true">
+        <div class="float f1"><p class="ft"><i>根</i>根拠つき</p><span class="src">留意事項通知 第2の1(1)</span></div>
+        <div class="float f2"><p class="ft"><i>✕</i>間違えた問題</p><span class="big">3</span> 問を正解まで解き直し</div>
+        <div class="float f3"><p class="ft"><i>例</i>現場のケース</p><div class="mini-dots"><span class="done">確認</span><span class="now">報告</span><span>保険</span></div></div>
+      </div>
     </div>
+  </div>
+  <div class="wrap">
+    <div class="counts rise d5">
+      <div><b>15<small>ジャンル</small></b><span>保険から小児・精神まで</span></div>
+      <div><b>100<small>節以上</small></b><span>根拠つきの解説</span></div>
+      <div><b>200<small>問以上</small></b><span>クイズ</span></div>
+      <div><b>20<small>本以上</small></b><span>現場のケース</span></div>
+    </div>
+    <p class="counts-note">数は公開に向けて収録している予定の数です。現役の訪問看護師さんの確認が済んだものから順に公開します。</p>
   </div>
 </section>
 
@@ -686,6 +761,17 @@ function mountQuestion(el, { tag, q, choices, answer, explain, basis }, after) {
     result.querySelector('[data-next]')?.addEventListener('click', (ev) => ev.currentTarget._go?.());
     el.dispatchEvent(new CustomEvent('answered', { detail: { ok } }));
   }));
+}
+
+// ファーストビュー: 現場の「迷い」を数秒ごとに入れ替える
+const ASKS = ['「これ、医療保険？ 介護保険？」', '「この加算、算定できる？」', '「夜の電話。行く？ 救急車？」', '「ケアマネさんに、どこまで伝える？」', '「特別指示書、何日まで？」'];
+const askEl = document.querySelector('[data-ask]');
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let ai = 0;
+  setInterval(() => {
+    askEl.classList.remove('in'); askEl.classList.add('out');
+    setTimeout(() => { ai = (ai + 1) % ASKS.length; askEl.textContent = ASKS[ai]; askEl.classList.remove('out'); askEl.classList.add('in'); }, 340);
+  }, 2800);
 }
 
 // ファーストビューの1問
