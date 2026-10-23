@@ -1,11 +1,11 @@
 {
-  "name": "訪看ワークス — 訪問看護という働き方",
-  "short_name": "訪看ワークス",
-  "description": "訪問看護という働き方を知るための情報メディア",
+  "name": "訪看スタディ｜訪問看護師のための学習アプリ",
+  "short_name": "訪看スタディ",
+  "description": "訪問看護の「保険」と「現場の判断」を、根拠つきの解説・クイズ・ケースで学ぶ",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#faf6ee",
-  "theme_color": "#2c4a3b",
+  "background_color": "#f6f3ec",
+  "theme_color": "#2f6b5a",
   "icons": [
     { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
