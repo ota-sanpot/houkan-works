@@ -839,14 +839,19 @@ if (PURCHASE_URL) {
 const io = new IntersectionObserver((entries) => entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { rootMargin: '0px 0px -8% 0px' });
 document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = `${(i % 3) * 70}ms`; io.observe(el); });
 
-// スマホ: ファーストビューを過ぎたら下に申し込みボタンを出す（最後の案内が見えている間は隠す）
+// スマホ: ファーストビューを過ぎたら下に購入ボタンを出す
 const dock = document.querySelector('.dock');
 const heroSec = document.querySelector('.hero');
-const finalSec = document.querySelector('#buy');
-let pastHero = false, atFinal = false;
-const paint = () => dock.classList.toggle('show', pastHero && !atFinal);
-new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; paint(); }).observe(heroSec);
-new IntersectionObserver(([e]) => { atFinal = e.isIntersecting; paint(); }).observe(finalSec);
+// 最後の購入案内かフッターが見えている間は隠す（フッターの上に重ならないように）
+const endEls = [document.querySelector('#buy'), document.querySelector('footer')];
+function paintDock() {
+  const pastHero = heroSec.getBoundingClientRect().bottom < 0;
+  const atEnd = endEls.some((el) => el.getBoundingClientRect().top < innerHeight);
+  dock.classList.toggle('show', pastHero && !atEnd);
+}
+addEventListener('scroll', paintDock, { passive: true });
+addEventListener('resize', paintDock);
+paintDock();
 </script>
 </body>
 </html>
