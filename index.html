@@ -60,7 +60,9 @@ button { font: inherit; color: inherit; }
 }
 .top .wrap { display: flex; align-items: center; gap: 18px; height: 60px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-weight: 900; letter-spacing: .06em; font-size: 17px; }
-.brand-mark { width: 28px; height: 28px; border-radius: 8px; flex: none; background: linear-gradient(135deg, var(--pine) 0 50%, var(--indigo) 50% 100%); box-shadow: inset 0 0 0 2px rgba(255,255,255,.35); }
+.brand-logo { width: 36px; height: 36px; flex: none; display: block; }
+.brand-foot { font-size: 19px; gap: 14px; }
+.brand-foot .brand-logo { width: 72px; height: 72px; }
 .top nav { margin-left: auto; display: none; gap: 22px; }
 .top nav a { color: var(--ink-2); text-decoration: none; font-size: 14px; font-weight: 500; }
 .top nav a:hover { color: var(--pine); }
@@ -156,7 +158,7 @@ button { font: inherit; color: inherit; }
 }
 .screen { color: var(--ink); border-radius: 30px; overflow: hidden; background: var(--paper); min-height: 500px; display: flex; flex-direction: column; }
 .screen-bar { display: flex; align-items: center; gap: 8px; padding: 14px 16px 10px; border-bottom: 1px solid var(--line); font-weight: 700; font-size: 13px; }
-.screen-bar .brand-mark { width: 20px; height: 20px; border-radius: 6px; }
+.screen-bar .brand-logo { width: 20px; height: 20px; }
 .screen-body { padding: 14px 14px 18px; flex: 1; }
 .tiny { font-size: 11.5px; color: var(--ink-3); font-weight: 700; letter-spacing: .08em; margin: 0 0 6px; }
 .q-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px 14px; box-shadow: var(--shadow); }
@@ -414,7 +416,7 @@ footer .disc { max-width: 46em; }
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#"><span class="brand-mark" aria-hidden="true"></span>訪看スタディ</a>
+    <a class="brand" href="#"><img class="brand-logo" src="assets/logo-96.png" width="36" height="36" alt="">訪看スタディ</a>
     <nav aria-label="ページ内リンク">
       <a href="#ways">学び方</a><a href="#genres">15ジャンル</a><a href="#case">ケースを体験</a><a href="#price">価格</a><a href="#faq">よくある質問</a>
     </nav>
@@ -441,7 +443,7 @@ footer .disc { max-width: 46em; }
     <div class="phone-stage rise d4" id="try">
       <div class="phone" aria-label="アプリの画面（ためしに1問解けます）">
         <div class="screen">
-          <div class="screen-bar"><span class="brand-mark" aria-hidden="true"></span>訪看スタディ<span style="margin-left:auto" class="tiny">今日の5問 1/5</span></div>
+          <div class="screen-bar"><img class="brand-logo" src="assets/logo-96.png" width="20" height="20" alt="">訪看スタディ<span style="margin-left:auto" class="tiny">今日の5問 1/5</span></div>
           <div class="screen-body">
             <div class="q-card" data-quiz="hero"></div>
             <div class="stats3" style="margin-top:12px" aria-hidden="true">
@@ -718,7 +720,7 @@ footer .disc { max-width: 46em; }
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="#"><span class="brand-mark" aria-hidden="true"></span>訪看スタディ</a>
+    <a class="brand brand-foot" href="#"><img class="brand-logo" src="assets/logo-320.png" width="72" height="72" alt="">訪看スタディ</a>
     <p class="disc">訪看スタディは、訪問看護師のための学習用の教材です。実際の算定や請求は、最新の告示・通知と保険者の判断に従ってください。</p>
     <p>© 訪看スタディ</p>
   </div>
