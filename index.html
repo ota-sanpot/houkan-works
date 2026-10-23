@@ -106,6 +106,7 @@ button { font: inherit; color: inherit; }
 .live i { width: 9px; height: 9px; border-radius: 50%; background: #7fe0b5; box-shadow: 0 0 0 0 rgba(127,224,181,.7); animation: pulse 1.8s infinite; }
 @keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(127,224,181,0); } 100% { box-shadow: 0 0 0 0 rgba(127,224,181,0); } }
 .live span { opacity: .75; font-weight: 500; }
+.live b { font-weight: 700; }
 @media (max-width: 600px) { .live span { display: none; } }
 /* 入れ替わる「迷い」 */
 .ask { position: relative; margin: 0 0 8px; min-height: 1.5em; white-space: nowrap; font-size: clamp(14px, 4.3vw, 23px); font-weight: 700; line-height: 1.45; color: #cfe6dc; }
@@ -365,7 +366,7 @@ h2.title { text-wrap: balance; font-weight: 900; font-size: clamp(25px, 4.2vw, 3
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq details p { margin: 0 0 18px; padding-left: 26px; color: var(--ink-2); }
 
-/* ── 11 先行案内 ── */
+/* ── 11 購入 ── */
 .final { position: relative; overflow: hidden; color: #fff; border-radius: 28px; padding: 46px 24px; text-align: center;
   background: radial-gradient(120% 140% at 0% 0%, #3a7d69 0%, var(--pine-deep) 48%, #1d3550 100%); box-shadow: var(--shadow); }
 .final::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 35px, rgba(255,255,255,.06) 35px 36px); pointer-events: none; }
@@ -374,7 +375,10 @@ h2.title { text-wrap: balance; font-weight: 900; font-size: clamp(25px, 4.2vw, 3
 .final h2 { text-wrap: balance; font-weight: 900; font-size: clamp(25px, 4.4vw, 40px); line-height: 1.45; margin: 0 0 12px; }
 .final p { margin: 0 auto 26px; max-width: 34em; opacity: .9; }
 .final .btn.primary { background: #fff; color: var(--pine-deep); border-color: #fff; font-size: 17px; min-height: 58px; padding: 0 34px; }
-.final .btn[aria-disabled='true'] { opacity: .75; cursor: not-allowed; transform: none; }
+.final .btn[aria-disabled='true'] { opacity: .8; cursor: default; transform: none; }
+.btn.soon { cursor: default; box-shadow: none; }
+.btn.soon:hover { transform: none; box-shadow: none; }
+.ticket .btn.soon { background: var(--paper-2); border-color: var(--line-2); color: var(--ink-2); }
 .final .fine { font-size: 12.5px; opacity: .75; margin: 18px auto 0; }
 
 footer { padding: 46px 0 120px; color: var(--ink-3); font-size: 13px; }
@@ -414,7 +418,7 @@ footer .disc { max-width: 46em; }
     <nav aria-label="ページ内リンク">
       <a href="#ways">学び方</a><a href="#genres">15ジャンル</a><a href="#case">ケースを体験</a><a href="#price">価格</a><a href="#faq">よくある質問</a>
     </nav>
-    <a class="btn primary small" href="#waitlist" data-waitlist>先行案内を受け取る</a>
+    <a class="btn primary small" href="#price" data-buy data-buy-label="購入する" data-soon-label="近日発売">近日発売</a>
   </div>
 </header>
 
@@ -423,12 +427,12 @@ footer .disc { max-width: 46em; }
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="live rise d1"><i aria-hidden="true"></i>先行案内 受付中<span>｜訪問看護師のための学習アプリ</span></p>
+      <p class="live rise d1"><i aria-hidden="true"></i><b data-live>近日発売</b><span>｜訪問看護師のための学習アプリ</span></p>
       <p class="ask rise d2" aria-hidden="true"><span class="ask-q" data-ask>「これ、医療保険？ 介護保険？」</span><span class="caret"></span></p>
       <h1 class="rise d2"><span class="sr">「これ、医療保険？ 介護保険？」</span>訪問看護の<span class="em">「迷う」</span>を、<br><span class="draw">「言い切れる」に。</span></h1>
       <p class="sub rise d3">保険の振り分けや加算から、急変時の報告まで15ジャンル。<b>根拠つきの解説</b>と<b>1日5問のクイズ</b>、<b>現場のケース</b>で、移動の合間に身につけます。</p>
       <div class="cta rise d4">
-        <a class="btn primary" href="#waitlist" data-waitlist>先行案内を受け取る<small>無料</small> <span class="arrow">→</span></a>
+        <a class="btn primary" href="#price" data-buy data-buy-label="¥4,980で購入する" data-soon-label="近日発売｜¥4,980">近日発売｜¥4,980</a>
         <a class="btn ghost-w" href="#try">まず1問、解いてみる</a>
       </div>
       <p class="price-line rise d5"><strong>¥4,980<small>買い切り</small></strong><span>月額0円</span><span>改定の更新もずっと無料</span></p>
@@ -662,7 +666,7 @@ footer .disc { max-width: 46em; }
       <div class="ticket reveal">
         <p class="label">訪看スタディ（15ジャンルすべて）</p>
         <p class="yen">¥4,980<small>買い切り</small></p>
-        <p class="note-line">公開の予定と購入の方法は、先行案内でお知らせします</p>
+        <p class="note-line" data-buy-note>まもなく発売します。準備が整い次第、このページから購入できます</p>
         <hr>
         <ul>
           <li>15ジャンルの解説・クイズ・ケースがすべて使える</li>
@@ -670,7 +674,7 @@ footer .disc { max-width: 46em; }
           <li>スマホとPCで、同じ記録の続きから学べる</li>
           <li>月額料金・自動更新はありません</li>
         </ul>
-        <a class="btn primary" href="#waitlist" data-waitlist>先行案内を受け取る <span class="arrow">→</span></a>
+        <a class="btn primary" href="#price" data-buy data-hard data-buy-label="¥4,980で購入する" data-soon-label="近日発売">近日発売</a>
       </div>
       <div class="compare">
         <div class="reveal"><b>ずっと使える</b><p>サブスクではないので、解約を気にせず、自分のペースで何度でも読み返せます。</p></div>
@@ -692,20 +696,21 @@ footer .disc { max-width: 46em; }
       <details class="reveal"><summary>保険や算定の内容は正確ですか？</summary><p>告示・通知などの一次資料と照らし合わせて書き、根拠の箇所をすべて載せています。そのうえで、現役の訪問看護師さんが確認したものだけを公開します。実際の請求は、最新の告示・通知と保険者の判断に従ってください。</p></details>
       <details class="reveal"><summary>報酬改定があったらどうなりますか？</summary><p>改定に合わせて中身を更新します。購入済みの方は追加料金なしで新しい内容を読めます。どの改定に基づく内容かは、ページごとに表示しています。</p></details>
       <details class="reveal"><summary>アプリのインストールは必要ですか？</summary><p>不要です。スマホやPCのブラウザで開けます。ホーム画面に追加すると、アプリのように使えます。</p></details>
-      <details class="reveal"><summary>先行案内に登録すると、料金がかかりますか？</summary><p>かかりません。公開の時期と購入の方法、無料体験のご案内をメールでお送りするだけです。</p></details>
+      <details class="reveal"><summary>いつから買えますか？</summary><p>まもなく発売します。準備が整い次第、このページから購入できるようになります。</p></details>
+      <details class="reveal"><summary>支払い方法は何がありますか？</summary><p>決済サービス Stripe の決済ページでのクレジットカード払いを予定しています。月額料金や自動更新はなく、お支払いは1回だけです。</p></details>
     </div>
   </div>
 </section>
 
-<!-- 11 先行案内 -->
-<section class="block" id="waitlist" style="padding-top:20px">
+<!-- 11 購入 -->
+<section class="block" id="buy" style="padding-top:20px">
   <div class="wrap">
     <div class="final reveal">
-      <p class="eyebrow">先行案内（無料）</p>
-      <h2>公開のお知らせを、<br>いちばん先に受け取りませんか。</h2>
-      <p>メールアドレスを登録すると、公開の時期と購入の方法、無料体験の始め方をお送りします。</p>
-      <a class="btn primary" href="#waitlist" data-waitlist data-main-cta>先行案内を受け取る <span class="arrow">→</span></a>
-      <p class="fine" data-cta-note>登録したメールアドレスは、訪看スタディのお知らせにだけ使います。いつでも配信を止められます。</p>
+      <p class="eyebrow">訪看スタディ ¥4,980 買い切り</p>
+      <h2>迷ったときに開ける場所を、<br>ポケットに。</h2>
+      <p>15ジャンルの解説・クイズ・ケースがすべて使えて、報酬改定の更新もずっと無料。月額料金はありません。</p>
+      <a class="btn primary" href="#price" data-buy data-hard data-buy-label="¥4,980で購入する" data-soon-label="近日発売">近日発売</a>
+      <p class="fine" data-buy-note>まもなく発売します。準備が整い次第、このページから購入できます。</p>
     </div>
   </div>
 </section>
@@ -719,11 +724,12 @@ footer .disc { max-width: 46em; }
   </div>
 </footer>
 
-<div class="dock" aria-hidden="true"><a class="btn primary" href="#waitlist" data-waitlist tabindex="-1">先行案内を受け取る <span class="arrow">→</span></a></div>
+<div class="dock" aria-hidden="true"><a class="btn primary" href="#price" data-buy data-buy-label="¥4,980で購入する" data-soon-label="近日発売｜¥4,980" tabindex="-1">近日発売｜¥4,980</a></div>
 
 <script>
-// 先行案内のフォーム（Googleフォーム）のURL。空のあいだは、ボタンはページ下の案内へ移動するだけ
-const WAITLIST_URL = '';
+// Stripe の決済リンク。空のあいだは「近日発売」の表示（ボタンは価格の欄へ移動するだけ）
+// 入れる前に、特定商取引法に基づく表記（販売者＝看護師さん名義）のページを用意すること
+const PURCHASE_URL = '';
 
 // ── 問題（アプリに入っている問題と同じ） ──
 const HERO_Q = {
@@ -799,26 +805,34 @@ function caseEnd() {
     <p class="tiny">ふりかえり</p>
     <p class="score"><b>${caseScore}</b> / ${CASE_STEPS.length} 正解</p>
     <p class="explain" style="margin:0 auto 16px;max-width:30em">アプリには、こうした現場のケースが入っています。間違えたところは、関係するジャンルの解説からすぐ読み返せます。</p>
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><a class="btn primary" href="#waitlist" data-waitlist>先行案内を受け取る <span class="arrow">→</span></a><button class="btn" data-retry>もう一度</button></div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><a class="btn primary" href="#price" data-buy data-buy-label="¥4,980で購入する" data-soon-label="価格を見る">価格を見る</a><button class="btn" data-retry>もう一度</button></div>
   </div>`;
-  applyWaitlist(caseEl);
+  applyBuy(caseEl);
   caseEl.querySelector('[data-retry]').addEventListener('click', () => { caseScore = 0; caseStep(0); });
 }
 caseStep(0);
 
-// 先行案内のボタン: URLがあればフォームを新しいタブで開く。なければ下の案内へ
-function applyWaitlist(root = document) {
-  root.querySelectorAll('[data-waitlist]').forEach((a) => {
-    if (WAITLIST_URL) { a.href = WAITLIST_URL; a.target = '_blank'; a.rel = 'noopener'; }
+// 購入ボタン: 決済リンクがあれば「購入する」、なければ「近日発売」（価格の欄へ移動。価格の欄と最後の欄のボタンは押せない表示）
+function applyBuy(root = document) {
+  root.querySelectorAll('[data-buy]').forEach((a) => {
+    if (PURCHASE_URL) {
+      a.href = PURCHASE_URL;
+      a.innerHTML = `${a.dataset.buyLabel} <span class="arrow">→</span>`;
+      a.removeAttribute('aria-disabled');
+    } else {
+      a.textContent = a.dataset.soonLabel;
+      if (a.hasAttribute('data-hard')) {
+        a.setAttribute('aria-disabled', 'true');
+        a.classList.add('soon');
+        a.addEventListener('click', (e) => e.preventDefault());
+      }
+    }
   });
 }
-applyWaitlist();
-if (!WAITLIST_URL) {
-  const main = document.querySelector('[data-main-cta]');
-  main.setAttribute('aria-disabled', 'true');
-  main.innerHTML = '受付の準備中です';
-  main.addEventListener('click', (e) => e.preventDefault());
-  document.querySelector('[data-cta-note]').textContent = '受付フォームはまもなく公開します。もうしばらくお待ちください。';
+applyBuy();
+if (PURCHASE_URL) {
+  document.querySelectorAll('[data-buy-note]').forEach((n) => { n.textContent = '決済は Stripe の決済ページで行います。お支払いは1回だけで、月額料金はありません。'; });
+  document.querySelector('[data-live]').textContent = '発売中';
 }
 
 // スクロールで少しずつ表示
@@ -828,7 +842,7 @@ document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDel
 // スマホ: ファーストビューを過ぎたら下に申し込みボタンを出す（最後の案内が見えている間は隠す）
 const dock = document.querySelector('.dock');
 const heroSec = document.querySelector('.hero');
-const finalSec = document.querySelector('#waitlist');
+const finalSec = document.querySelector('#buy');
 let pastHero = false, atFinal = false;
 const paint = () => dock.classList.toggle('show', pastHero && !atFinal);
 new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; paint(); }).observe(heroSec);
