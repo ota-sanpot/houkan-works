@@ -388,8 +388,11 @@ footer .wrap { display: grid; gap: 12px; }
 footer .disc { max-width: 46em; }
 
 /* スマホの下に固定する申し込みボタン */
-.dock { position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 40; transform: translateY(140%); transition: transform .35s cubic-bezier(.2,.7,.2,1); }
-.dock.show { transform: none; }
+/* 隠すときは、ホームバーの分（safe-area）も含めて確実に画面の外へ出し、見えなくする */
+.dock { position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 40;
+  transform: translateY(calc(100% + 40px + env(safe-area-inset-bottom))); opacity: 0; visibility: hidden; pointer-events: none;
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), opacity .25s ease, visibility 0s linear .35s; }
+.dock.show { transform: none; opacity: 1; visibility: visible; pointer-events: auto; transition: transform .35s cubic-bezier(.2,.7,.2,1), opacity .25s ease, visibility 0s; }
 .dock .btn { width: 100%; }
 @media (min-width: 900px) { .dock { display: none; } footer { padding-bottom: 50px; } }
 
